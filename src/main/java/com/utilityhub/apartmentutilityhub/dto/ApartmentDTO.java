@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class ApartmentDTO {
 
-    private Long apartmentId;
+    private Long id;
     @NotEmpty(message = "Enter the owners first name!")
     private String ownersFirstName;
     @NotEmpty(message = "Enter the owners last name!")
@@ -17,5 +17,6 @@ public class ApartmentDTO {
     private String ownersPhone;
     @NotEmpty(message = "Enter the owners email address!")
     private String ownersEmail;
+    private int apartmentNumber;
 
 }
