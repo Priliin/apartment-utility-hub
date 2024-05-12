@@ -21,12 +21,10 @@
                 </div>
                 <div th:each = "apartment :${apartments}" class="col-lg-6 mb-2">
                     <div class="position-relative mb-5">
-                        <img class="img-fluid rounded-3 mb-3" th:src="${apartment.photoUrl}" alt="..." />
-                        <a th:text= "${apartment.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                        <a th:text= "${apartment.apartmentNumber}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!"></a>
 
                     </div>
-                    <a class = "btn btn-primary" th:href="@{/apartments/{apartmentNumber}(c=${apartment.id})}">View</a>
-                    <a class = "btn btn-primary" th:href="@{/apartments/{apartmentNumber}/edit(apartmentNumber=${apartment.id})}">Edit</a>
+
                 </div>
             </div>
         </div>
