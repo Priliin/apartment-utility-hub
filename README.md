@@ -43,4 +43,4 @@ This application is designed to provide a platform for apartment owners, residen
 
 ## Contributors
 
-Liina and Indrek
+Liina, Indrek and Renar
