@@ -1,5 +1,6 @@
-package com.utilityhub.apartmentutilityhub.service;
+package com.utilityhub.apartmentutilityhub.service.impl;
 
+import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.exception.UserNotFoundException;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
@@ -7,15 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartmentDTO;
 
 
 @Service
 @Transactional
-public class ApartmentService {
+public class ApartmentServiceImpl {
 
     private final ApartmentRepo apartmentRepo;
 
-    public ApartmentService(ApartmentRepo apartmentRepo) {
+    public ApartmentServiceImpl(ApartmentRepo apartmentRepo) {
         this.apartmentRepo = apartmentRepo;
     }
 
@@ -26,8 +30,10 @@ public class ApartmentService {
     }
 
     // Find all apartments
-    public List<Apartment> findAllApartments() {
-        return apartmentRepo.findAll();
+    public List<ApartmentDTO> findAllApartments() {
+       List<Apartment> apartments = apartmentRepo.findAll();
+       return apartments.stream().map((apartment) -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
+
     }
 
     // Update apartment information

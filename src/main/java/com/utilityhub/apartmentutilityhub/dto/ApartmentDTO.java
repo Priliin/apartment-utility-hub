@@ -17,5 +17,6 @@ public class ApartmentDTO {
     private String ownersPhone;
     @NotEmpty(message = "Enter the owners email address!")
     private String ownersEmail;
+    private int apartmentNumber;
 
 }
