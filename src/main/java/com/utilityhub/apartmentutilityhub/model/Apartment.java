@@ -15,7 +15,7 @@ public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, updatable = false)
     private Integer apartmentNumber;
