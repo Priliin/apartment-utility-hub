@@ -1,29 +1,34 @@
-package com.utilityhub.apartmentutilityhub.resource;
+package com.utilityhub.apartmentutilityhub.controller;
 
+import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
-import com.utilityhub.apartmentutilityhub.service.ApartmentService;
+import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 // Resource is the endpoint, interaction with the user
-@RestController
+@Controller
+
 @RequestMapping("/apartment")
-public class ApartmentResource {
+public class ApartmentController {
 
-    private final ApartmentService apartmentService;
+    private final ApartmentServiceImpl apartmentService;
 
-    public ApartmentResource(ApartmentService apartmentService) {
+    public ApartmentController(ApartmentServiceImpl apartmentService) {
         this.apartmentService = apartmentService;
     }
 
     // Read all apartments
     @GetMapping("/all")
-    public ResponseEntity<List<Apartment>> getAllApartments() {
-        List<Apartment> apartments = apartmentService.findAllApartments();
-        return new ResponseEntity<>(apartments, HttpStatus.OK);
+    public String getAllApartments(ModelMap model) {
+        List<ApartmentDTO> apartments = apartmentService.findAllApartments();
+        model.addAttribute("apartments", apartments);
+        return "apartment-list";
     }
 
     // Find apartment by Apartment Number

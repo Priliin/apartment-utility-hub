@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
+@Builder
 public class Apartment {
 
     // Create a table to the database
@@ -20,7 +21,7 @@ public class Apartment {
     private Long apartmentId;
 
     @Column(nullable = false, updatable = false)
-    private Integer apartmentNumber;
+    private int apartmentNumber;
 
     private String ownersFirstName;
     private String ownersLastName;
