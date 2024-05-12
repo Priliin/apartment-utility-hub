@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface ApartmentRepo extends JpaRepository<Apartment, Integer> {
+public interface ApartmentRepo extends JpaRepository<Apartment, Long> {
 
     Optional<Apartment> findApartmentByApartmentNumber(Integer apartmentNumber);
 }

@@ -21,7 +21,7 @@ public class ApartmentService {
 
     // Adding new apartment
     public Apartment addApartment(Apartment apartment) {
-        apartment.setId(apartment.getId()+1); // ? Set id
+      //  apartment.setApartmentId(apartment.getApartmentId()+1); // ? Set id // ID is generated automatically?
         return apartmentRepo.save(apartment);
     }
 
@@ -43,8 +43,8 @@ public class ApartmentService {
     }
 
     // Delete apartment by ID
-    public void deleteApartmentById(Integer id) {
-        apartmentRepo.deleteById(id);
+    public void deleteApartmentById(Long apartmentId) {
+        apartmentRepo.deleteById(apartmentId);
     }
 
 }

@@ -3,6 +3,8 @@ package com.utilityhub.apartmentutilityhub.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,7 +17,7 @@ public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Long id;
+    private Long apartmentId;
 
     @Column(nullable = false, updatable = false)
     private Integer apartmentNumber;
@@ -25,4 +27,7 @@ public class Apartment {
     private String ownersPhone;
     private String ownersEmail;
 
+    @OneToMany(mappedBy = "apartment")
+    private List<ApartmentData> data;
 }
+

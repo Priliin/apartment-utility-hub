@@ -50,8 +50,8 @@ public class ApartmentResource {
 
     // Delete apartment
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Integer id) {
-        apartmentService.deleteApartmentById(id);
+    public ResponseEntity<?> deleteApartment(@PathVariable("id") Long apartmentId) {
+        apartmentService.deleteApartmentById(apartmentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

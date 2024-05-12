@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class ApartmentDTO {
 
-    private Long id;
+    private Long apartmentId;
     @NotEmpty(message = "Enter the owners first name!")
     private String ownersFirstName;
     @NotEmpty(message = "Enter the owners last name!")
