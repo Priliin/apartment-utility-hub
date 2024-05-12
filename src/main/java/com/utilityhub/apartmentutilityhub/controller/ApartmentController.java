@@ -13,7 +13,6 @@ import java.util.List;
 
 // Resource is the endpoint, interaction with the user
 @Controller
-
 @RequestMapping("/apartment")
 public class ApartmentController {
 
@@ -25,7 +24,7 @@ public class ApartmentController {
 
     // Read all apartments
     @GetMapping("/all")
-    public String getAllApartments(ModelMap model) {
+    public String getAllApartments( ModelMap model) {
         List<ApartmentDTO> apartments = apartmentService.findAllApartments();
         model.addAttribute("apartments", apartments);
         return "apartment-list";
@@ -55,8 +54,8 @@ public class ApartmentController {
 
     // Delete apartment
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteApartment(@PathVariable("id") Long apartmentId) {
-        apartmentService.deleteApartmentById(apartmentId);
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
+        apartmentService.deleteApartmentById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -49,7 +49,7 @@ public class ApartmentServiceImpl {
     }
 
     // Delete apartment by ID
-    public void deleteApartmentById(Integer id) {
+    public void deleteApartmentById(Long id) {
         apartmentRepo.deleteById(id);
     }
 

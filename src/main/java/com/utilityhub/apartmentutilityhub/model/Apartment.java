@@ -3,6 +3,7 @@ package com.utilityhub.apartmentutilityhub.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -18,7 +19,7 @@ public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Long apartmentId;
+    private Long id;
 
     @Column(nullable = false, updatable = false)
     private int apartmentNumber;
@@ -27,8 +28,7 @@ public class Apartment {
     private String ownersLastName;
     private String ownersPhone;
     private String ownersEmail;
+    @OneToMany(mappedBy = "apartment", cascade = CascadeType.REMOVE)
+    private List<ApartmentData> apartmentDataList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "apartment")
-    private List<ApartmentData> data;
 }
-
