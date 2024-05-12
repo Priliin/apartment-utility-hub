@@ -1,0 +1,11 @@
+package com.utilityhub.apartmentutilityhub.service;
+
+import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public interface ApartmentService {
+    List<ApartmentDTO> findAllApartments();
+}
