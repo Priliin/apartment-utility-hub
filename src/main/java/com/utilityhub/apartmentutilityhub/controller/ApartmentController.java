@@ -3,10 +3,12 @@ package com.utilityhub.apartmentutilityhub.controller;
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,13 @@ public class ApartmentController {
         this.apartmentService = apartmentService;
     }
 
+    //Apartment details
+    @GetMapping("/{apartmentNumber}")
+    public String apartmentDetails(@PathVariable("apartmentNumber") int apartmentNumber, ModelMap model){
+        ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+        model.addAttribute("apartment", apartment);
+        return "apartment-details";
+    }
     // Read all apartments
     @GetMapping("/all")
     public String getAllApartments( ModelMap model) {
@@ -30,19 +39,30 @@ public class ApartmentController {
         return "apartment-list";
     }
 
-    // Find apartment by Apartment Number
-    @GetMapping("/find/{apartmentNumber}")
-    public ResponseEntity<Apartment> getApartmentByApartmentNumber(
-            @PathVariable("apartmentNumber") Integer apartmentNumber) {
-        Apartment apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
-        return new ResponseEntity<>(apartment, HttpStatus.OK);
-    }
 
     // Add new apartment
+    @GetMapping("/add")
+    public String addApartment(ModelMap model) {
+        Apartment newApartment = new Apartment();
+        model.addAttribute("apartment", newApartment);
+        return "apartments-create";
+    }
     @PostMapping("/add")
-    public ResponseEntity<Apartment> addApartment(@RequestBody Apartment apartment) {
-        Apartment newApartment = apartmentService.addApartment(apartment);
-        return new ResponseEntity<>(newApartment, HttpStatus.CREATED);
+    public String addApartment(@Valid @ModelAttribute("apartment") ApartmentDTO apartmentDTO, BindingResult result, ModelMap model){
+        if(result.hasErrors()){
+            model.addAttribute("apartment", apartmentDTO);
+                    return "apartments-create";
+        }
+        apartmentService.saveApartment(apartmentDTO);
+        return "redirect:/apartment/all";
+    }
+
+    //Search
+    @GetMapping("/search")
+    public String searchApartments(@RequestParam(value = "query") String query, ModelMap model){
+        List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);;
+        model.addAttribute("apartments", apartmentsByLastName);
+        return "apartment-list";
     }
 
     // Update apartment

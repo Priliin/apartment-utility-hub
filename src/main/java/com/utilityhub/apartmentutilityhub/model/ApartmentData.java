@@ -19,7 +19,7 @@ public class ApartmentData {
     private Long dataId;
 
     @ManyToOne
-    @JoinColumn(name = "apartment_id", nullable = false)
+    @JoinColumn(name = "apartment_number", nullable = false)
     private Apartment apartment;
 
     private YearMonth yearMonth;
