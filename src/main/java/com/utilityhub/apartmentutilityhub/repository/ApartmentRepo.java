@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface ApartmentRepo extends JpaRepository<Apartment, Long> {
 
     Optional<ApartmentDTO> findApartmentByApartmentNumber(Integer apartmentNumber);
+
+
     @Query("SELECT a FROM Apartment a WHERE a.ownersLastName LIKE CONCAT ('%', :query, '%')")
     List<Apartment> searchByOwnersLastName(String query);
 }

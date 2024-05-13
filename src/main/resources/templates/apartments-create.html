@@ -11,7 +11,7 @@
         <div class ="container">
             <form role = "form" method = "post" th:action="@{/apartment/add}" th:object = "${apartment}" >
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="apartmentNumber">Apartment Number</label>
                         <input
                                 type="text"
@@ -22,7 +22,7 @@
                                 placeholder="Apartment number">
                         <p th:if="${#fields.hasErrors('apartmentNumber')}" class="text-danger" th:errors="*{apartmentNumber}"></p>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="ownersFirstName">Owners first name</label>
                         <input
                                 type="text"
@@ -34,7 +34,7 @@
                         <p th:if="${#fields.hasErrors('ownersFirstName')}" class="text-danger" th:errors="*{ownersFirstName}"></p>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="ownersLastName">Owners last name</label>
                         <input
                                 type="text"
@@ -45,7 +45,7 @@
                                 placeholder="Owners last name">
                         <p th:if="${#fields.hasErrors('ownersLastName')}" class="text-danger" th:errors="*{ownersLastName}"></p>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="ownersPhone">Owners phone number</label>
                         <input
                                 type="text"
@@ -56,7 +56,7 @@
                                 placeholder="Owners phone number">
                         <p th:if="${#fields.hasErrors('ownersPhone')}" class="text-danger" th:errors="*{ownersPhone}"></p>
                     </div>
-                    <div class="form-group col-mb-6">
+                    <div class="form-group col-md-3">
                         <label for="ownersEmail">Owners email address</label>
                         <input
                                 type="text"

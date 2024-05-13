@@ -66,11 +66,27 @@ public class ApartmentController {
     }
 
     // Update apartment
-    @PutMapping("/update")
-    public ResponseEntity<Apartment> updateApartment(@RequestBody Apartment apartment) {
-        Apartment updatedApartment = apartmentService.updateApartment(apartment);
-        return new ResponseEntity<>(updatedApartment, HttpStatus.OK);
+    @GetMapping("/{apartmentNumber}/edit")
+    public String editApartmentInfo(@PathVariable("apartmentNumber") Integer apartmentNumber, ModelMap model){
+        ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+        model.addAttribute("apartment", apartment);
+        return "apartment-edit";
     }
+
+    @PostMapping("/{apartmentNumber}/edit")
+    public String editApartment(@PathVariable("apartmentNumber") Integer apartmentNumber,
+                                    @Valid @ModelAttribute("apartment")
+             ApartmentDTO apartmentDTO, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return"apartment-edit";
+        }
+        ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+        apartmentDTO.setId(apartment.getId());
+        apartmentService.saveApartment(apartmentDTO);
+        return "redirect:/apartment/{apartmentNumber}";
+    }
+
 
     // Delete apartment
     @DeleteMapping("/delete/{id}")

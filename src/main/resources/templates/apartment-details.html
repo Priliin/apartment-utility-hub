@@ -33,6 +33,7 @@
                                 <p class="card-text" th:text="${'Owners last name: ' + apartment.ownersLastName}"></p>
                                 <p class="card-text" th:text="${'Owners phone number: ' + apartment.ownersPhone}"></p>
                                 <p class="card-text" th:text="${'Owners email: ' + apartment.ownersEmail}"></p>
+                                <a class="btn btn-primary" th:href="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}">Edit information</a>
                             </div>
                         </div>
                     </div>

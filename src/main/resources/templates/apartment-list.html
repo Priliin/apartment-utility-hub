@@ -22,9 +22,11 @@
                         <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Search by last name" aria-label="Search">
                     </form>
                 </div>
+                <h2>Apartments: </h2>
+
                 <div th:each = "apartment :${apartments}" class="col-lg-6 mb-2">
                     <div class="position-relative mb-5">
-                        <a th:text= "${apartment.apartmentNumber}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:href="@{/apartment/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
+                        <a th:text= "${'Nr: ' + apartment.apartmentNumber}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:href="@{/apartment/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
 
                     </div>
 

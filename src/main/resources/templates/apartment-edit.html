@@ -1,0 +1,71 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Edit apartment</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment = "body" class="py-5">
+        <div class ="container">
+            <form role = "form" method = "post" th:action="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}" th:object = "${apartment}" >
+                <input type = "hidden" th:field="*{apartmentNumber}">
+                <div class="form-row">
+                    <h2> Edit apartment information</h2>
+                    <br>
+                    <div class="form-group col-md-3">
+                        <label for="firstName">Owners first name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="firstName"
+                                name = "firstName"
+                                th:field = "*{ownersFirstName}"
+                                placeholder="Owners first name">
+                        <p th:if="${#fields.hasErrors('ownersFirstName')}" class="text-danger" th:errors="*{ownersFirstName}"></p>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="lastName">Owners last name</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="lastName"
+                            name = "lastName"
+                            th:field = "*{ownersLastName}"
+                            placeholder="Owners last name">
+                    <p th:if="${#fields.hasErrors('ownersLastName')}" class="text-danger" th:errors="*{ownersLastName}"></p>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="phone">Phone number</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="phone"
+                            name = "phone"
+                            th:field = "*{ownersPhone}"
+                            placeholder="Owners phone number">
+                    <p th:if="${#fields.hasErrors('ownersPhone')}" class="text-danger" th:errors="*{ownersPhone}"></p>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="email">Owners email</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            name = "email"
+                            th:field = "*{ownersEmail}"
+                            placeholder="Owners email">
+                    <p th:if="${#fields.hasErrors('ownersEmail')}" class="text-danger" th:errors="*{ownersEmail}"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+</body>

@@ -44,10 +44,6 @@ public class ApartmentServiceImpl implements ApartmentService {
         return null;
     }
 
-    @Override
-    public void updateApartment(ApartmentDTO apartment) {
-
-    }
 
     @Override
     public void deleteApartment(Long apartmentId) {
@@ -62,14 +58,8 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     }
 
-
-
-    // Update apartment information
-    public Apartment updateApartment(Apartment apartment) {
-        return apartmentRepo.save(apartment);
-    }
-
     // Find apartment by Apartment Number
+    @Override
     public ApartmentDTO findApartmentByApartmentNumber(Integer apartmentNumber) {
         return apartmentRepo.findApartmentByApartmentNumber(apartmentNumber).orElseThrow(
                 () -> new UserNotFoundException("Apartment number " + apartmentNumber + " not found!")

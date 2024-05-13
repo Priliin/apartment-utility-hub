@@ -14,7 +14,7 @@ public interface ApartmentService {
 
     Apartment findByApartmentId(long apartmentId);
 
-    void updateApartment(ApartmentDTO apartment);
     void deleteApartment(Long apartmentId);
     List<ApartmentDTO> searchApartmentByOwnersLastName(String query);
+    ApartmentDTO findApartmentByApartmentNumber(Integer apartmentNumber);
 }
