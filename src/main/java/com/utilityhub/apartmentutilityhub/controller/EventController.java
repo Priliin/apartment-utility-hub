@@ -20,7 +20,7 @@ public class EventController {
     @GetMapping("/info")
     public String infoPage(ModelMap model) {
         List<EventDTO> events = eventService.findAllEvents();
-        model.addAttribute("event", events);
+        model.addAttribute("events", events);
         return "event-info";
     }
 }
