@@ -1,0 +1,43 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Event details</title>
+</head>
+<body class="d-flex flex-column">
+
+<section layout:fragment = "body">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder"th:text="${id}"></h1>
+            <p class="lead mb-0">Event details</p>
+        </div>
+    </div>
+    </header>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <h2>Event information</h2>
+                <div  class="card mb-4">
+                    <div class="card-body">
+
+                        <a class="btn btn-primary" href="">Edit information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>
