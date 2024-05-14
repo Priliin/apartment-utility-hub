@@ -1,8 +1,10 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
+import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,14 +28,15 @@ public class ApartmentController {
 
     //Apartment details
     @GetMapping("/{apartmentNumber}")
-    public String apartmentDetails(@PathVariable("apartmentNumber") int apartmentNumber, ModelMap model){
+    public String apartmentDetails(@PathVariable("apartmentNumber") int apartmentNumber, ModelMap model) {
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
         model.addAttribute("apartment", apartment);
         return "apartment-details";
     }
+
     // Read all apartments
     @GetMapping("/all")
-    public String getAllApartments( ModelMap model) {
+    public String getAllApartments(ModelMap model) {
         List<ApartmentDTO> apartments = apartmentService.findAllApartments();
         model.addAttribute("apartments", apartments);
         return "apartment-list";
@@ -47,11 +50,12 @@ public class ApartmentController {
         model.addAttribute("apartment", newApartment);
         return "apartments-create";
     }
+
     @PostMapping("/add")
-    public String addApartment(@Valid @ModelAttribute("apartment") ApartmentDTO apartmentDTO, BindingResult result, ModelMap model){
-        if(result.hasErrors()){
+    public String addApartment(@Valid @ModelAttribute("apartment") ApartmentDTO apartmentDTO, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
             model.addAttribute("apartment", apartmentDTO);
-                    return "apartments-create";
+            return "apartments-create";
         }
         apartmentService.saveApartment(apartmentDTO);
         return "redirect:/apartment/all";
@@ -59,15 +63,16 @@ public class ApartmentController {
 
     //Search
     @GetMapping("/search")
-    public String searchApartments(@RequestParam(value = "query") String query, ModelMap model){
-        List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);;
+    public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {
+        List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);
+        ;
         model.addAttribute("apartments", apartmentsByLastName);
         return "apartment-list";
     }
 
     // Update apartment
     @GetMapping("/{apartmentNumber}/edit")
-    public String editApartmentInfo(@PathVariable("apartmentNumber") Integer apartmentNumber, ModelMap model){
+    public String editApartmentInfo(@PathVariable("apartmentNumber") Integer apartmentNumber, ModelMap model) {
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
         model.addAttribute("apartment", apartment);
         return "apartment-edit";
@@ -75,11 +80,11 @@ public class ApartmentController {
 
     @PostMapping("/{apartmentNumber}/edit")
     public String editApartment(@PathVariable("apartmentNumber") Integer apartmentNumber,
-                                    @Valid @ModelAttribute("apartment")
-             ApartmentDTO apartmentDTO, BindingResult bindingResult){
+                                @Valid @ModelAttribute("apartment")
+                                ApartmentDTO apartmentDTO, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
-            return"apartment-edit";
+        if (bindingResult.hasErrors()) {
+            return "apartment-edit";
         }
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
         apartmentDTO.setId(apartment.getId());

@@ -1,8 +1,10 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.exception.UserNotFoundException;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
+import com.utilityhub.apartmentutilityhub.model.Event;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
 import com.utilityhub.apartmentutilityhub.service.ApartmentService;
 import org.springframework.stereotype.Service;
