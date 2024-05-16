@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.utilityhub.apartmentutilityhub.mapper.EventMapper.mapToEvent;
 import static com.utilityhub.apartmentutilityhub.mapper.EventMapper.mapToEventDTO;
 
 @Service
@@ -33,5 +34,11 @@ public class EventServiceImpl implements EventService {
     public EventDTO findEventById(Long id) {
        Event event = eventRepo.findById(id).get();
        return mapToEventDTO(event);
+    }
+
+    @Override
+    public void createEvent(EventDTO eventDTO) {
+        Event event = mapToEvent(eventDTO);
+        eventRepo.save(event);
     }
 }

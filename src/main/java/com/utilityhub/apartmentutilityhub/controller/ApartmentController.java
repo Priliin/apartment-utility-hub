@@ -48,14 +48,14 @@ public class ApartmentController {
     public String addApartment(ModelMap model) {
         Apartment newApartment = new Apartment();
         model.addAttribute("apartment", newApartment);
-        return "apartments-create";
+        return "apartment-create";
     }
 
     @PostMapping("/add")
     public String addApartment(@Valid @ModelAttribute("apartment") ApartmentDTO apartmentDTO, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             model.addAttribute("apartment", apartmentDTO);
-            return "apartments-create";
+            return "apartment-create";
         }
         apartmentService.saveApartment(apartmentDTO);
         return "redirect:/apartment/all";

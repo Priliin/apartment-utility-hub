@@ -14,15 +14,20 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/apartment/all}">Apartments</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/info}">Information</a></li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                    <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
                         <li><a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
-                        <li><a class="dropdown-item" href="blog-home.html">Register</a></li>
-                        <li><a class="dropdown-item" href="blog-post.html">Logout</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Information</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" th:href = "@{/info}">Events</a></li>
+                        <li><a class="dropdown-item" th:href = "@{/info/addEvent}">Add event</a></li>
                     </ul>
                 </li>
             </ul>

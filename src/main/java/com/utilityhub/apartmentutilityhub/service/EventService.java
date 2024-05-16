@@ -11,4 +11,6 @@ public interface EventService {
 
     List<EventDTO> findAllEvents();
     EventDTO findEventById(Long id);
+
+    void createEvent(EventDTO eventDTO);
 }
