@@ -12,16 +12,24 @@
     <section layout:fragment = "body" class="py-5">
         <div class="container px-5 my-5">
             <div class="text-center mb-5">
-                <h1 class="fw-bolder">Information</h1>
-                <p class="lead fw-normal text-muted mb-0">General information for attendants</p>
+                <h1 class="fw-bolder">Events</h1>
+                <p class="lead fw-normal text-muted mb-0">Ongoing events</p>
             </div>
-            <div class="row gx-5">
-                <div th:each = "event :${events}" class="col-lg-6 mb-2">
-                    <div class="position-relative mb-5">
 
-                        <a th:text= "${event.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:href="@{/info/{id}(id=${event.id})}"></a>
+            <div class="row gx-5">
+            <div th:each = "event :${events}" class="col-lg-6 mb-2">
+                <div class="card mb-4">
+                    <div class="card-body">
+                    <h2 th:text="${event.title}" ></h2>
+                    <h4 th:text="${event.eventType}" class="card-subtitle mb-2"></h4>
+                        <h6 th:text="${'Takes place: ' + event.startTime + ' - ' + event.endTime}" class="card-subtitle mb-2 text-muted"></h6>
+                        <br>
+                        <p class="card-text" th:text="${event.eventDescription}"></p>
+                        <h6 th:text="${'Creation date: ' + event.creationDate}" class="card-subtitle mb-2 text-muted"></h6>
+                    <a class="btn btn-primary" th:href="@{/info/{eventId}(eventId=${event.id})}">View Event</a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>

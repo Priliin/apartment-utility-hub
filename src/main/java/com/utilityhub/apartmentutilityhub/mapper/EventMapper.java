@@ -13,6 +13,7 @@ public class EventMapper {
                 .startTime(eventDTO.getStartTime())
                 .endTime(eventDTO.getEndTime())
                 .creationDate(eventDTO.getCreationDate())
+                .eventDescription(eventDTO.getEventDescription())
                 .build();
 
     }
@@ -24,6 +25,7 @@ public class EventMapper {
                 .startTime(event.getStartTime())
                 .endTime(event.getEndTime())
                 .creationDate(event.getCreationDate())
+                .eventDescription(event.getEventDescription())
                 .build();
 
     }

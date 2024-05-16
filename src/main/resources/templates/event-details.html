@@ -14,7 +14,6 @@
             <p class="lead mb-0">Event details</p>
         </div>
     </div>
-    </header>
     <div class="container">
         <div class="row">
 
@@ -28,7 +27,9 @@
                 <h2>Event information</h2>
                 <div  class="card mb-4">
                     <div class="card-body">
-
+                        <h3 th:text="${event.title}"></h3>
+                        <h4 th:text="${event.eventType}"></h4>
+                        <p class="card-text" th:text="${event.eventDescription}"></p>
                         <a class="btn btn-primary" href="">Edit information</a>
                     </div>
                 </div>
