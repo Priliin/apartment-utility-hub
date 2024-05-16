@@ -1,6 +1,7 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
 import com.utilityhub.apartmentutilityhub.dto.EventDTO;
+import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.Event;
 import com.utilityhub.apartmentutilityhub.repository.EventRepo;
 import com.utilityhub.apartmentutilityhub.service.EventService;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartmentDTO;
 import static com.utilityhub.apartmentutilityhub.mapper.EventMapper.mapToEvent;
 import static com.utilityhub.apartmentutilityhub.mapper.EventMapper.mapToEventDTO;
 
@@ -41,4 +43,9 @@ public class EventServiceImpl implements EventService {
         Event event = mapToEvent(eventDTO);
         eventRepo.save(event);
     }
+
+    @Override
+    public List<EventDTO> searchByEventName(String query) {
+        List<Event> events = eventRepo.searchByEventName(query);
+        return events.stream().map(event -> mapToEventDTO(event)).collect(Collectors.toList());    }
 }

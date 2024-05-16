@@ -1,5 +1,6 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
+import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Event;
 import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
@@ -47,5 +48,13 @@ public class EventController {
         eventService.createEvent(eventDTO);
         return "redirect:/info";
     }
+    @GetMapping("/search")
+    public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {
+        List<EventDTO> eventByName = eventService.searchByEventName(query);
+
+        model.addAttribute("events", eventByName);
+        return "event-info";
+    }
+
 }
 
