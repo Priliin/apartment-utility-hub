@@ -33,5 +33,7 @@ public class EventDTO {
     @NotNull(message = "Set the ending time of the event!")
     @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
     private LocalDateTime endTime;
+    @NotEmpty(message = "Fill in the content of the event!")
+    private String eventContent;
     private LocalDateTime creationDate;
 }

@@ -8,7 +8,6 @@
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
 
-    <!-- Page Content-->
     <section layout:fragment = "body" class="py-5">
         <div class="container px-5 my-5">
             <div class="text-center mb-5">
@@ -16,7 +15,7 @@
                 <p class="lead fw-normal text-muted mb-0">Ongoing events</p>
             </div>
             <div>
-                <form th:action="@{/info/search}" class="form-inline my-2 my-lg-0 mb-3">
+                <form th:action="@{/event/search}" class="form-inline my-2 my-lg-0 mb-3">
                     <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Search by event name" aria-label="Search">
                 </form>
             </div>
@@ -30,7 +29,7 @@
                         <br>
                         <p class="card-text" th:text="${event.eventDescription}"></p>
                         <h6 th:text="${'Creation date: ' + event.creationDate}" class="card-subtitle mb-2 text-muted"></h6>
-                    <a class="btn btn-primary" th:href="@{/info/{eventId}(eventId=${event.id})}">View Event</a>
+                    <a class="btn btn-primary" th:href="@{/event/{eventId}(eventId=${event.id})}">View Event</a>
                     </div>
                 </div>
             </div>

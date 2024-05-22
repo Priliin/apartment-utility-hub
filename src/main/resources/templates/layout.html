@@ -16,6 +16,14 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
 
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="informationBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General information</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" th:href = "@{/information}">Information</a></li>
+                        <li><a class="dropdown-item" th:href = "@{/information/addInfo}">Add information</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li><a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
@@ -24,12 +32,21 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Information</a>
+                    <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/info}">Events</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/info/addEvent}">Add event</a></li>
+                        <li><a class="dropdown-item" th:href = "@{/event}">Events</a></li>
+                        <li><a class="dropdown-item" th:href = "@{/event/addEvent}">Add event</a></li>
                     </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="reportBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
+                        <li><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -42,12 +59,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
     </div>
 </section>
 <footer class="bg-dark py-4 mt-auto">
-    <div class="container px-5">
+    <div class="container px-6">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-            <div class="col-auto"><div class="small m-0 text-white">fff</div></div>
+            <div class="col-auto"><div class="small m-0 text-white">Apartment Utility hub</div></div>
             <div class="col-auto">
-                <a class="link-light small" href="#!">Privacy</a>
-                <span class="text-white mx-1">&middot;</span>
                 <a class="link-light small" href="#!">Terms</a>
                 <span class="text-white mx-1">&middot;</span>
                 <a class="link-light small" href="#!">Contact</a>

@@ -14,6 +14,7 @@ public class EventMapper {
                 .endTime(eventDTO.getEndTime())
                 .creationDate(eventDTO.getCreationDate())
                 .eventDescription(eventDTO.getEventDescription())
+                .eventContent(eventDTO.getEventContent())
                 .build();
 
     }
@@ -26,6 +27,7 @@ public class EventMapper {
                 .endTime(event.getEndTime())
                 .creationDate(event.getCreationDate())
                 .eventDescription(event.getEventDescription())
+                .eventContent(event.getEventContent())
                 .build();
 
     }

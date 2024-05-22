@@ -21,6 +21,8 @@ public class Event {
     private String title;
     private String eventDescription;
     private String eventType;
+    @Column(name = "event_content", length = 16777215, columnDefinition = "mediumtext")
+    private String eventContent;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     @CreationTimestamp

@@ -1,6 +1,6 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
-import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+
 import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Event;
 import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/info")
+@RequestMapping("/event")
 public class EventController {
     private final EventServiceImpl eventService;
 
@@ -46,7 +46,7 @@ public class EventController {
             return "event-create";
         }
         eventService.createEvent(eventDTO);
-        return "redirect:/info";
+        return "redirect:/event";
     }
     @GetMapping("/search")
     public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {

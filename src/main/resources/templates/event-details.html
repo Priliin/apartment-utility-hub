@@ -22,15 +22,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6">
-
-                <h2>Event information</h2>
-                <div  class="card mb-4">
-                    <div class="card-body">
-                        <h3 th:text="${event.title}"></h3>
-                        <h4 th:text="${event.eventType}"></h4>
-                        <p class="card-text" th:text="${event.eventDescription}"></p>
-                        <a class="btn btn-primary" href="">Edit information</a>
+            <div class="text">
+                <div  class="text">
+                    <div class="text">
+                        <h2 th:text="${event.title}"></h2>
+                        <h4 th:text="${event.eventType}" class="card-subtitle mb-2"></h4>
+                        <h6 th:text="${'Takes place: ' + event.startTime + ' - ' + event.endTime}" class="card-subtitle mb-2 text-muted"></h6>
+                        <br>
+                        <p class="text" th:text="${event.eventContent}"></p>
+                        <br>
                     </div>
                 </div>
             </div>
