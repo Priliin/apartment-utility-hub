@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.time.YearMonth;
 
+// Entity class that represents the data
+// related to an apartment’s water usage.
+// Defines the entity’s persistence in a database.
 @Getter
 @Setter
 @Entity

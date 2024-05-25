@@ -22,28 +22,35 @@ public class EventServiceImpl implements EventService {
 
     private EventRepo eventRepo;
 
+    // Constructor to set the eventRepo field
     public EventServiceImpl(EventRepo eventRepo) {
         this.eventRepo = eventRepo;
     }
 
+    // Method to find all events from the database
     @Override
     public List<EventDTO> findAllEvents() {
         List<Event> events = eventRepo.findAll();
         return events.stream().map(event -> mapToEventDTO(event)).collect(Collectors.toList());
     }
 
+    // Method to find an event by its ID
     @Override
     public EventDTO findEventById(Long id) {
        Event event = eventRepo.findById(id).get();
        return mapToEventDTO(event);
     }
 
+    // Method to create a new event entry
     @Override
     public void createEvent(EventDTO eventDTO) {
         Event event = mapToEvent(eventDTO);
         eventRepo.save(event);
     }
 
+    // Method to search for events by their name using a
+    // custom query defined in the EventRepo.
+    // It returns a list of EventDTOs that match the search criteria.
     @Override
     public List<EventDTO> searchByEventName(String query) {
         List<Event> events = eventRepo.searchByEventName(query);

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
+// Entity that creates and represents a record of information in a database
 @Builder
 @Data
 @NoArgsConstructor

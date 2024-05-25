@@ -3,6 +3,9 @@ package com.utilityhub.apartmentutilityhub.mapper;
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 
+// Utility class that contains methods for converting
+// between Apartment and ApartmentDTO objects.
+
 public class ApartmentMapper {
 
     public static Apartment mapToApartment(ApartmentDTO apartment){

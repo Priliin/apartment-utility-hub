@@ -1,9 +1,11 @@
-    package com.utilityhub.apartmentutilityhub.exception;
+package com.utilityhub.apartmentutilityhub.exception;
 
-    public class UserNotFoundException extends RuntimeException {
 
-        public UserNotFoundException(String message) {
+// Defines a custom exception if the user is not found
+public class UserNotFoundException extends RuntimeException {
+
+    public UserNotFoundException(String message) {
             super(message);
         }
 
-    }
+}

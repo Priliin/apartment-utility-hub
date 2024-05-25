@@ -6,6 +6,8 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Entity class that creates and represents an apartment entity in a database.
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,8 +16,6 @@ import java.util.List;
 @Entity
 @Builder
 public class Apartment {
-
-    // Create a table to the database
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)

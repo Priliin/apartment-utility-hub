@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// Handling web requests related to information entries
 @Controller
 @RequestMapping("/information")
 public class InformationController {

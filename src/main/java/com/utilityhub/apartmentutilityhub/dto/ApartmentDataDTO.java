@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.time.YearMonth;
 
+// Data Transfer Object (DTO) class for storing apartment data
+// For entering the hot and cold water usage
+// TODO: How to add graphics of the usages? L.
 @Data
 public class ApartmentDataDTO {
 

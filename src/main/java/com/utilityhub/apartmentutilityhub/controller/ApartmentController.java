@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 // Resource is the endpoint, interaction with the user
+// Handling web requests related to apartment entries
 @Controller
 @RequestMapping("/apartment")
 public class ApartmentController {

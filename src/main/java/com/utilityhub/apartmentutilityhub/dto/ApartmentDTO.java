@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+// Data transfer object (DTO) class for an apartment entity
+// For entering apartment owners' details
 @Data
 @Builder
 public class ApartmentDTO {

@@ -16,18 +16,19 @@ import java.util.stream.Collectors;
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartment;
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartmentDTO;
 
-
+// Service class that adheres to the ApartmentService interface.
 @Service
 @Transactional
 public class ApartmentServiceImpl implements ApartmentService {
 
     private final ApartmentRepo apartmentRepo;
 
+    // Constructor that uses dependency injection to set the apartmentRepo field.
     public ApartmentServiceImpl(ApartmentRepo apartmentRepo) {
         this.apartmentRepo = apartmentRepo;
     }
 
-
+    // Find all apartments
     @Override
     public List<ApartmentDTO> findAllApartments() {
        List<Apartment> apartments = apartmentRepo.findAll();
@@ -35,24 +36,26 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     }
 
+    // Save the apartment
     @Override
     public Apartment saveApartment(ApartmentDTO apartmentDTO) {
         Apartment apartment = mapToApartment(apartmentDTO);
         return apartmentRepo.save(apartment);
     }
 
+    // Find the apartment by ID
     @Override
     public Apartment findByApartmentId(long apartmentId) {
         return null;
     }
 
-
+    // Delete the apartment
     @Override
     public void deleteApartment(Long apartmentId) {
 
     }
 
-
+    // Search apartment by owners last name
     @Override
     public List<ApartmentDTO> searchApartmentByOwnersLastName(String query) {
         List<Apartment> apartments = apartmentRepo.searchByOwnersLastName(query);

@@ -14,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
+// Data Transfer Object (DTO) class for creating new events (meetings etc).
 @Data
 @Builder
 @NoArgsConstructor

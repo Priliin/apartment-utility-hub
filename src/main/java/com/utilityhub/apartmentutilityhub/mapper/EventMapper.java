@@ -3,6 +3,8 @@ package com.utilityhub.apartmentutilityhub.mapper;
 import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Event;
 
+// Class that contains two static methods
+// for converting between two object types: Event and EventDTO.
 public class EventMapper {
 
     public static Event mapToEvent(EventDTO eventDTO){
