@@ -1,9 +1,9 @@
-package com.utilityhub.apartmentutilityhub.exception;
+    package com.utilityhub.apartmentutilityhub.exception;
 
-public class UserNotFoundException extends RuntimeException {
+    public class UserNotFoundException extends RuntimeException {
 
-    public UserNotFoundException(String message) {
-        super(message);
+        public UserNotFoundException(String message) {
+            super(message);
+        }
+
     }
-
-}
