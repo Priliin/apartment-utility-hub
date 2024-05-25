@@ -1,0 +1,83 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Add an apartment</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment = "body" class="py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bolder">Add an apartment</h1>
+        </div>
+        <div class ="container">
+            <form role = "form" method = "post" th:action="@{/apartment/add}" th:object = "${apartment}" >
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="apartmentNumber">Apartment Number</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="apartmentNumber"
+                                name = "apartmentNumber"
+                                th:field = "*{apartmentNumber}"
+                                placeholder="Apartment number">
+                        <p th:if="${#fields.hasErrors('apartmentNumber')}" class="text-danger" th:errors="*{apartmentNumber}"></p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="ownersFirstName">Owners first name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="ownersFirstName"
+                                name = "ownersFirstName"
+                                th:field = "*{ownersFirstName}"
+                                placeholder="Owners first name">
+                        <p th:if="${#fields.hasErrors('ownersFirstName')}" class="text-danger" th:errors="*{ownersFirstName}"></p>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="ownersLastName">Owners last name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="ownersLastName"
+                                name = "ownersLastName"
+                                th:field = "*{ownersLastName}"
+                                placeholder="Owners last name">
+                        <p th:if="${#fields.hasErrors('ownersLastName')}" class="text-danger" th:errors="*{ownersLastName}"></p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="ownersPhone">Owners phone number</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="ownersPhone"
+                                name = "ownersPhone"
+                                th:field = "*{ownersPhone}"
+                                placeholder="Owners phone number">
+                        <p th:if="${#fields.hasErrors('ownersPhone')}" class="text-danger" th:errors="*{ownersPhone}"></p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="ownersEmail">Owners email address</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="ownersEmail"
+                                name = "ownersEmail"
+                                th:field = "*{ownersEmail}"
+                                placeholder="Owners email address">
+                        <p th:if="${#fields.hasErrors('ownersEmail')}" class="text-danger" th:errors="*{ownersEmail}"></p>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

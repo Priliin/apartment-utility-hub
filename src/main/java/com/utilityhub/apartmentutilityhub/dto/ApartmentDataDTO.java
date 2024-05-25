@@ -10,10 +10,8 @@ public class ApartmentDataDTO {
 
     @NotNull(message = "Apartment ID must not be null")
     private Long apartmentId;
-
     @NotNull(message = "Month must not be null")
     private YearMonth month;
-
     private Double hotWaterUsage;
     private Double coldWaterUsage;
     private Double gasUsage;

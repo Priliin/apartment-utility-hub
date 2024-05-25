@@ -1,6 +1,7 @@
 package com.utilityhub.apartmentutilityhub.service;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,8 @@ public interface ApartmentService {
 
     Apartment findByApartmentId(long apartmentId);
 
-    void updateApartment(ApartmentDTO apartment);
     void deleteApartment(Long apartmentId);
-    List<ApartmentDTO> searchApartment(String query);
+    List<ApartmentDTO> searchApartmentByOwnersLastName(String query);
+    ApartmentDTO findApartmentByApartmentNumber(Integer apartmentNumber);
+
 }

@@ -20,10 +20,8 @@ public class Apartment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-
     @Column(nullable = false, updatable = false)
-    private int apartmentNumber;
-
+    private Integer apartmentNumber;
     private String ownersFirstName;
     private String ownersLastName;
     private String ownersPhone;

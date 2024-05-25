@@ -1,6 +1,8 @@
 package com.utilityhub.apartmentutilityhub.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,6 +19,7 @@ public class ApartmentDTO {
     private String ownersPhone;
     @NotEmpty(message = "Enter the owners email address!")
     private String ownersEmail;
-    private int apartmentNumber;
+    @NotNull(message = "Enter the owners apartment number!")
+    private Integer apartmentNumber;
 
 }
