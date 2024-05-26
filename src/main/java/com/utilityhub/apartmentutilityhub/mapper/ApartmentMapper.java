@@ -7,7 +7,7 @@ public class ApartmentMapper {
 
     public static Apartment mapToApartment(ApartmentDTO apartment){
         Apartment apartmentDTO = Apartment.builder()
-                .id(apartment.getId())
+                .apartmentId(apartment.getApartmentId())
                 .ownersFirstName(apartment.getOwnersFirstName())
                 .ownersLastName(apartment.getOwnersLastName())
                 .ownersPhone(apartment.getOwnersPhone())
@@ -18,7 +18,7 @@ public class ApartmentMapper {
     }
     public static ApartmentDTO mapToApartmentDTO(Apartment apartment){
         ApartmentDTO apartmentDTO = ApartmentDTO.builder()
-                .id(apartment.getId())
+                .apartmentId(apartment.getApartmentId())
                 .ownersFirstName(apartment.getOwnersFirstName())
                 .ownersLastName(apartment.getOwnersLastName())
                 .ownersPhone(apartment.getOwnersPhone())
