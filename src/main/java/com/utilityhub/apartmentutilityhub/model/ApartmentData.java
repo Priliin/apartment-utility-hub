@@ -12,14 +12,16 @@ import java.time.YearMonth;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "apartment_data")
 public class ApartmentData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private Long dataId;
 
     @ManyToOne
-    @JoinColumn(name = "apartment_number", nullable = false)
+    @JoinColumn(name = "id", nullable = false) // Viitab 'apartmentId' veerule tabelis 'apartments'
     private Apartment apartment;
 
     private YearMonth yearMonth;
