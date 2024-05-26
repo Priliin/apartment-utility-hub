@@ -2,7 +2,6 @@ package com.utilityhub.apartmentutilityhub.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.YearMonth;
 
 @Getter
@@ -12,6 +11,7 @@ import java.time.YearMonth;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "apartment_data")
 public class ApartmentData {
 
     @Id
@@ -19,7 +19,7 @@ public class ApartmentData {
     private Long dataId;
 
     @ManyToOne
-    @JoinColumn(name = "apartment_number", nullable = false)
+    @JoinColumn(name = "apartment_id", nullable = false) // Viitab 'apartmentId' veerule tabelis 'apartments'
     private Apartment apartment;
 
     private YearMonth yearMonth;
