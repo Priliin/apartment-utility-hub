@@ -1,5 +1,6 @@
 package com.utilityhub.apartmentutilityhub.model;
 
+import com.utilityhub.apartmentutilityhub.yearmonthconverter.YearMonthAttributeConverter;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.YearMonth;
@@ -15,13 +16,13 @@ import java.time.YearMonth;
 public class ApartmentData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long dataId;
 
     @ManyToOne
     @JoinColumn(name = "apartment_id", nullable = false) // Viitab 'apartmentId' veerule tabelis 'apartments'
     private Apartment apartment;
-
+    @Convert(converter = YearMonthAttributeConverter.class)
     private YearMonth yearMonth;
     private Double hotWaterUsage;
     private Double coldWaterUsage;
