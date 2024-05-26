@@ -6,8 +6,9 @@
     import lombok.Builder;
     import lombok.Data;
     import lombok.NoArgsConstructor;
+    import org.springframework.format.annotation.DateTimeFormat;
 
-    import java.time.YearMonth;
+    import java.time.LocalDate;
 
 
     @Data
@@ -21,7 +22,8 @@
         private Apartment id;
         private Long apartmentDataId;
         @NotNull(message = "Month must not be null")
-        private YearMonth month;
+        @DateTimeFormat(pattern = "MM.YYYY")
+        private LocalDate date;
         private Double hotWaterUsage;
         private Double coldWaterUsage;
         private Double gasUsage;
