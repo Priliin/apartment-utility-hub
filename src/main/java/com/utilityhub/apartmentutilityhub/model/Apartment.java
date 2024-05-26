@@ -2,7 +2,6 @@
 
     import jakarta.persistence.*;
     import lombok.*;
-
     import java.util.ArrayList;
     import java.util.List;
 
@@ -14,8 +13,6 @@
     @Entity
     @Builder
     public class Apartment {
-
-        // Create a table to the database
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(nullable = false, updatable = false)
@@ -29,5 +26,4 @@
 
         @OneToMany(mappedBy = "apartment", cascade = CascadeType.REMOVE)
         private List<ApartmentData> apartmentDataList = new ArrayList<>();
-
     }

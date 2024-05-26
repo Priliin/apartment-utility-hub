@@ -63,7 +63,6 @@ public class ApartmentController {
     @GetMapping("/search")
     public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {
         List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);
-        ;
         model.addAttribute("apartments", apartmentsByLastName);
         return "apartment-list";
     }

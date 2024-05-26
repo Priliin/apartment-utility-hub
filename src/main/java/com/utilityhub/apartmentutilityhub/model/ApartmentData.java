@@ -2,7 +2,6 @@ package com.utilityhub.apartmentutilityhub.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.YearMonth;
 
 @Getter
