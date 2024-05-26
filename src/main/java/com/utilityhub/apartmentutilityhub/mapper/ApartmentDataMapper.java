@@ -8,7 +8,7 @@ public class ApartmentDataMapper {
     public static ApartmentData mapToApartmentData(ApartmentDataDTO apartmentDataDTO) {
         return ApartmentData.builder()
                 .dataId(apartmentDataDTO.getApartmentDataId())
-                .apartment(apartmentDataDTO.getApartmentId())
+                .apartment(apartmentDataDTO.getId())
                 .yearMonth(apartmentDataDTO.getMonth())
                 .hotWaterUsage(apartmentDataDTO.getHotWaterUsage())
                 .coldWaterUsage(apartmentDataDTO.getColdWaterUsage())
@@ -19,7 +19,7 @@ public class ApartmentDataMapper {
     public static ApartmentDataDTO mapToApartmentDataDTO(ApartmentData apartmentData) {
         return ApartmentDataDTO.builder()
                 .apartmentDataId(apartmentData.getDataId())
-                .apartmentId(apartmentData.getApartment())
+                .id(apartmentData.getApartment())
                 .month(apartmentData.getYearMonth())
                 .hotWaterUsage(apartmentData.getHotWaterUsage())
                 .coldWaterUsage(apartmentData.getColdWaterUsage())

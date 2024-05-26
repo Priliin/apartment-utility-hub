@@ -1,8 +1,10 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
+import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +65,7 @@ public class ApartmentController {
     @GetMapping("/search")
     public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {
         List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);
+        ;
         model.addAttribute("apartments", apartmentsByLastName);
         return "apartment-list";
     }
@@ -84,7 +87,7 @@ public class ApartmentController {
             return "apartment-edit";
         }
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
-        apartmentDTO.setApartmentId(apartment.getApartmentId());
+        apartmentDTO.setId(apartment.getId());
         apartmentService.saveApartment(apartmentDTO);
         return "redirect:/apartment/{apartmentNumber}";
     }
@@ -92,7 +95,7 @@ public class ApartmentController {
 
     // Delete apartment
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteApartment(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         apartmentService.deleteApartmentById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

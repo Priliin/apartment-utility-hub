@@ -6,16 +6,9 @@
     import lombok.Builder;
     import lombok.Data;
     import lombok.NoArgsConstructor;
-    import java.time.YearMonth;
-
-    @Data
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class ApartmentDataDTO {
-
 
     import java.time.YearMonth;
+
 
     @Data
     @Builder
@@ -25,7 +18,7 @@
 
 
         @NotNull(message = "Apartment ID must not be null")
-        private Apartment apartmentId;
+        private Apartment id;
         private Long apartmentDataId;
         @NotNull(message = "Month must not be null")
         private YearMonth month;

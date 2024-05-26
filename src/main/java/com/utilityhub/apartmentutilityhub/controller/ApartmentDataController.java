@@ -36,20 +36,20 @@ public class ApartmentDataController {
     }
 
     @GetMapping("/{apartmentId}")
-    public ResponseEntity<List<ApartmentData>> getApartmentDataByApartmentId(@PathVariable Apartment apartmentId) {
-        List<ApartmentData> apartmentDataList = apartmentDataService.getApartmentDataByApartmentId(apartmentId);
+    public ResponseEntity<List<ApartmentData>> getApartmentDataByApartmentId(@PathVariable Apartment id) {
+        List<ApartmentData> apartmentDataList = apartmentDataService.getApartmentDataByApartmentId(id);
         return new ResponseEntity<>(apartmentDataList, HttpStatus.OK);
     }
 
     @PutMapping("/{apartmentId}")
-    public ResponseEntity<ApartmentData> updateApartmentData(@PathVariable Long apartmentId, @RequestBody ApartmentData apartmentData) {
-        ApartmentData updatedApartmentData = apartmentDataService.updateApartmentData(apartmentId, apartmentData);
+    public ResponseEntity<ApartmentData> updateApartmentData(@PathVariable Long id, @RequestBody ApartmentData apartmentData) {
+        ApartmentData updatedApartmentData = apartmentDataService.updateApartmentData(id, apartmentData);
         return new ResponseEntity<>(updatedApartmentData, HttpStatus.OK);
     }
 
     @DeleteMapping("/{apartmentId}")
-    public ResponseEntity<?> deleteApartmentData(@PathVariable Long apartmentId) {
-        apartmentDataService.deleteApartmentData(apartmentId);
+    public ResponseEntity<?> deleteApartmentData(@PathVariable Long id) {
+        apartmentDataService.deleteApartmentData(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
