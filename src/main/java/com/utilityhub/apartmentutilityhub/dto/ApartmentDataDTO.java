@@ -14,6 +14,16 @@
     @NoArgsConstructor
     public class ApartmentDataDTO {
 
+
+    import java.time.YearMonth;
+
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class ApartmentDataDTO {
+
+
         @NotNull(message = "Apartment ID must not be null")
         private Apartment apartmentId;
         private Long apartmentDataId;

@@ -1,11 +1,13 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
 import com.utilityhub.apartmentutilityhub.service.ApartmentDataService;
+
 
 import java.util.List;
 
@@ -14,6 +16,11 @@ public class ApartmentDataServiceImpl implements ApartmentDataService {
 
     @Autowired
     private ApartmentRepo apartmentRepository;
+
+
+    public ApartmentDataServiceImpl(ApartmentRepo apartmentRepository) {
+        this.apartmentRepository = apartmentRepository;
+    }
 
     @Override
     public ApartmentData addApartmentData(ApartmentData apartmentData) {
