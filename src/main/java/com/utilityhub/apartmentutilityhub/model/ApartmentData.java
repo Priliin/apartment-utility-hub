@@ -1,11 +1,8 @@
 package com.utilityhub.apartmentutilityhub.model;
 
-import com.utilityhub.apartmentutilityhub.yearmonthconverter.YearMonthAttributeConverter;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
-import java.time.YearMonth;
 
 @Getter
 @Setter
