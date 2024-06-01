@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class WebSecurityConfig {
+public class    WebSecurityConfig {
 
     @Bean
     UserDetailsService userDetailsService(){
@@ -35,7 +35,7 @@ public class WebSecurityConfig {
     SecurityFilterChain configure(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/error", "/css/**", "/home", "/templates/**", "/information/**").hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
+                        .requestMatchers("/","/error", "/event/**", "/css/**", "/home", "/templates/**", "/information/**").hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
                         .requestMatchers( "/event/**", "/apartment/**").hasAnyAuthority("ACCOUNTANT", "ADMIN")
                         .requestMatchers("/**").hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated()

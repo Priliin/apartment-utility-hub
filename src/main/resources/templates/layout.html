@@ -20,7 +20,8 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                     <a class="nav-link dropdown-toggle" id="informationBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General information</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li><a class="dropdown-item" th:href = "@{/information}">Information</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/information/addInfo}">Add information</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href = "@{/information/addInfo}">Add information</a></li>
                     </ul>
                 </li>
 
@@ -28,7 +29,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                     <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li><a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
+
+
                     </ul>
                 </li>
 
@@ -39,15 +43,16 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                         <li><a class="dropdown-item" th:href = "@{/event/addEvent}">Add event</a></li>
                     </ul>
                 </li>
-
-                <li class="nav-item dropdown">
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="reportBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')"><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')"><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                     </ul>
-                </li>
 
+                </li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
     </div>
