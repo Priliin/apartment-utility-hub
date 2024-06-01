@@ -48,10 +48,14 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li sec:authorize="hasAuthority('ADMIN')"><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
                         <li sec:authorize="hasAuthority('ADMIN')"><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                     </ul>
 
                 </li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
+                <a class="nav-link" th:href="@{/register}">Register</a></li>
+
                 <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
