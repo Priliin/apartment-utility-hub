@@ -1,0 +1,65 @@
+
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Utilities usage</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+
+    <section layout:fragment = "body" class="py-5">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder">Apartment Utility Hub</h1>
+                <p class="lead fw-normal text-muted mb-0">Utilities usage</p>
+            </div>
+
+            <!--Suggested by Ultimate-->
+            <div th:if="${apartments.isEmpty()}" class="text-center">
+                <p>No utilities found.</p>
+            </div>
+            <!--Suggested by Ultimate-->
+            <div th:unless="${apartments.isEmpty()}" class="text-center">
+                <p>Utilities found.</p>
+            </div>
+
+            <div class="row gx-5">
+                <div>
+                    <form th:action="@{/apartment/search}"
+                          class="form-inline my-2 my-lg-0 mb-3">
+                        <input name="query"
+                               class="form-control mr-sm-2 mb-5"
+                               type="search"
+                               placeholder="Search by apa"
+                               aria-label="Search">
+                    </form>
+                </div>
+                <h2>Water usage: </h2>
+                <div th:each = "apartmentdata :${apartmentDataList}"
+                     class="col-lg-6 mb-2">
+                    <div class="position-relative mb-5">
+                        <!-- TODO: Insert correct input -->
+                        <a th:text= "${'Nr: ' + apartment.apartmentNumber}"
+                           class="h3 fw-bolder text-decoration-none link-dark stretched-link"
+                           th:href="@{/api/apartmentdata/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
+                    </div>
+                </div>
+
+                <h2>Gas usage: </h2>
+                <div th:each = "apartmentdata :${apartmentDataList}"
+                     class="col-lg-6 mb-2">
+                    <div class="position-relative mb-5">
+                        <!-- TODO: Insert correct input -->
+                        <a th:text= "${'Nr: ' + apartment.apartmentNumber}"
+                           class="h3 fw-bolder text-decoration-none link-dark stretched-link"
+                           th:href="@{/api/apartmentdata/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

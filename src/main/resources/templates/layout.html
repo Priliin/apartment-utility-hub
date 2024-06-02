@@ -15,6 +15,7 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
 
+                <!-- Information -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="informationBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General information</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -23,11 +24,40 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                     </ul>
                 </li>
 
+                <!-- Apartments -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
+                    <a class="nav-link dropdown-toggle"
+                       id="apartmentBar"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">Apartments</a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item"
+                               th:href = "@{/apartment/all}">Apartments</a></li>
+                        <li><a class="dropdown-item"
+                               th:href = "@{/apartment/add}">Add an apartment</a></li>
+                    </ul>
+                </li>
+
+                <!-- Utilities -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       id="utilitiesBar"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">Utilities</a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item"
+                               th:href = "@{/api/apartmentdata/all}">View utilities</a></li>
+                        <li><a class="dropdown-item"
+                               th:href = "@{/api/apartmentdata/addWater}">Add water usage</a></li>
+                        <li><a class="dropdown-item"
+                               th:href = "@{/api/apartmentdata/addGas}">Add gas usage</a></li>
+
                     </ul>
                 </li>
 
