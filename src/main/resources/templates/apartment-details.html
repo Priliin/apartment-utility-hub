@@ -11,35 +11,30 @@
 <section layout:fragment = "body">
     <div class="container">
         <div class="text-center my-5">
-            <h1 class="fw-bolder"th:text="${apartmentNumber}"></h1>
+            <h1 class="fw-bolder" th:text="${apartmentNumber}"></h1>
             <p class="lead mb-0">Apartment details</p>
         </div>
     </div>
-    </header>
+
     <div class="container">
         <div class="row">
-
             <div class="col-lg-8">
+            </div>
+        </div>
 
-                </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-
-                        <h2>Apartment information</h2>
-                        <div  class="card mb-4">
-                            <div class="card-body">
-                                <p class="card-text" th:text="${'Apartment number: ' + apartment.apartmentNumber}"></p>
-                                <p class="card-text" th:text="${'Owners first name: ' + apartment.ownersFirstName}"></p>
-                                <p class="card-text" th:text="${'Owners last name: ' + apartment.ownersLastName}"></p>
-                                <p class="card-text" th:text="${'Owners phone number: ' + apartment.ownersPhone}"></p>
-                                <p class="card-text" th:text="${'Owners email: ' + apartment.ownersEmail}"></p>
-                                <a class="btn btn-primary" th:href="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}">Edit information</a>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Apartment information</h2>
+                <div  class="card mb-4">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${'Apartment number: ' + apartment.apartmentNumber}"></p>
+                        <p class="card-text" th:text="${'Owners first name: ' + apartment.ownersFirstName}"></p>
+                        <p class="card-text" th:text="${'Owners last name: ' + apartment.ownersLastName}"></p>
+                        <p class="card-text" th:text="${'Owners phone number: ' + apartment.ownersPhone}"></p>
+                        <p class="card-text" th:text="${'Owners email: ' + apartment.ownersEmail}"></p>
+                        <a class="btn btn-primary" th:href="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}">Edit information</a>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

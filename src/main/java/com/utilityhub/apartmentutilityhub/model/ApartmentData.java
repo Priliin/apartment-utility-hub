@@ -26,3 +26,5 @@ public class ApartmentData {
     private Double coldWaterUsage;
     private Double gasUsage;
 }
+
+
