@@ -15,7 +15,6 @@ import java.util.List;
 @Builder
 public class Apartment {
 
-    // Create a table to the database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
@@ -26,7 +25,7 @@ public class Apartment {
     private String ownersLastName;
     private String ownersPhone;
     private String ownersEmail;
-    @OneToMany(mappedBy = "apartment", cascade = CascadeType.REMOVE)
-    private List<ApartmentData> apartmentDataList = new ArrayList<>();
+    private Long userId;
+
 
 }
