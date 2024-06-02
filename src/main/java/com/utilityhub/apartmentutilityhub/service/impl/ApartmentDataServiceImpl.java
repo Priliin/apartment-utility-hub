@@ -74,7 +74,7 @@ public class ApartmentDataServiceImpl implements ApartmentDataService {
                 .orElseThrow(() -> new IllegalArgumentException("Apartment not found with id: " + id));
 
         // Update the apartment data with the new values
-        apartment.setApartmentDataList(apartmentData.getApartment().getApartmentDataList());
+       
         // Repeat this for all fields you want to update
 
         // Save the updated apartment entity

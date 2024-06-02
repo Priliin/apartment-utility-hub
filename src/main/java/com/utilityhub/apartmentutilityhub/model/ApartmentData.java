@@ -1,17 +1,8 @@
 package com.utilityhub.apartmentutilityhub.model;
 
-import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
-import com.utilityhub.apartmentutilityhub.dto.ApartmentDataDTO;
-import com.utilityhub.apartmentutilityhub.yearmonthconverter.YearMonthAttributeConverter;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
 
 @Getter
 @Setter

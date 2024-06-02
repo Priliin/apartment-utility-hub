@@ -1,0 +1,103 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Register</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment = "body" class="py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bolder">Register</h1>
+            <p>Register a new user</p>
+        </div>
+        <div class ="container">
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div class="form-row">
+
+            </div>
+            <div class="form-group col-md-3">
+                <label for="apartmentNumber">Apartment Number:</label>
+                <input type="number"
+                       class="form-control"
+                       id="apartmentNumber"
+                       placeholder="Apartment Number"
+                       name="apartmentNumber" required />
+            </div>
+
+                <div class="form-group col-md-3">
+            <label for="firstName">First name</label>
+            <input type="text"
+                   class="form-control"
+                   id="firstName"
+                   placeholder="First name"
+                   th:field="*{firstName}" required /><br>
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="lastName">Last name:</label>
+            <input type="text"
+                   class="form-control"
+                   id="lastName"
+                   placeholder="Last name"
+                   th:field="*{lastName}" required /><br>
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="email">Email</label>
+            <input type="text"
+                   class="form-control"
+                   id="email"
+                   placeholder="Email"
+                   th:field="*{email}" required /><br>
+
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="username">Username:</label>
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="Username"
+                   th:field="*{username}" required /><br>
+
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="password">Password:</label>
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="password"
+                   th:field="*{password}" required /><br>
+
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="enabled">Enabled:</label>
+            <input type="checkbox"
+                   id="enabled"
+                   th:field="*{enabled}" /><br>
+
+                </div>
+
+                <div class="form-group col-md-3">
+            <label for="roles">Roles:</label>
+
+            <select multiple id="roles" th:field="*{roles}">
+                <option th:each="role : ${allRoles}" th:value="${role.id}" th:text="${role.name}"></option>
+            </select><br>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+        </form>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
