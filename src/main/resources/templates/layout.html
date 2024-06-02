@@ -45,10 +45,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                                th:href = "@{/api/apartmentdata/all}">View utilities</a></li>
                         <li sec:authorize="hasAuthority('USER')">
                             <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/add}">Add water usage</a></li>
+                               th:href = "@{/api/apartmentdata/addWater}">Add water usage</a></li>
                         <li sec:authorize="hasAuthority('USER')">
                             <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/add}">Add gas usage</a></li>
+                               th:href = "@{/api/apartmentdata/addGas}">Add gas usage</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
