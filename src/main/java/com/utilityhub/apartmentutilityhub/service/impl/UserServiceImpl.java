@@ -1,5 +1,6 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
+import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.model.Role;
 import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.repository.RoleRepo;
@@ -25,8 +26,8 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void createUser(String username, String password, String firstName, String lastName,
-                           String email,boolean enabled, Set<Long> roleIds) {
+    public User createUser(String username, String password, String firstName, String lastName,
+                              String email, boolean enabled, Set<Long> roleIds) {
         User user = new User();
 
         user.setUsername(username);
@@ -44,5 +45,7 @@ public class UserServiceImpl implements UserService {
         }
         user.setRoles(userRoles);
         userRepo.save(user);
+
+        return user;
     }
 }

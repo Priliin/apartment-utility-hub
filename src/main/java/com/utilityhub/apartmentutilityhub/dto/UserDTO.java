@@ -26,6 +26,7 @@ public class UserDTO {
     private String lastName;
     private boolean enabled;
 
+
     private Set<Long> roles;
 
 }

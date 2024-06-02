@@ -22,4 +22,6 @@ public class ApartmentDTO {
     @NotNull(message = "Enter the owners apartment number!")
     private Integer apartmentNumber;
 
+    private Long userId;
+
 }

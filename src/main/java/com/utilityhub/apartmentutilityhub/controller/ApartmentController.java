@@ -91,12 +91,4 @@ public class ApartmentController {
         apartmentService.saveApartment(apartmentDTO);
         return "redirect:/apartment/{apartmentNumber}";
     }
-
-
-    // Delete apartment
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
-        apartmentService.deleteApartmentById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }

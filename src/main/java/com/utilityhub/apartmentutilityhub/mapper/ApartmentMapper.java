@@ -13,6 +13,7 @@ public class ApartmentMapper {
                 .ownersPhone(apartment.getOwnersPhone())
                 .ownersEmail(apartment.getOwnersEmail())
                 .apartmentNumber(apartment.getApartmentNumber())
+                .userId(apartment.getUserId())
                 .build();
         return apartmentDTO;
     }
@@ -24,6 +25,7 @@ public class ApartmentMapper {
                 .ownersPhone(apartment.getOwnersPhone())
                 .ownersEmail(apartment.getOwnersEmail())
                 .apartmentNumber(apartment.getApartmentNumber())
+                .userId(apartment.getUserId())
                 .build();
         return apartmentDTO;
 

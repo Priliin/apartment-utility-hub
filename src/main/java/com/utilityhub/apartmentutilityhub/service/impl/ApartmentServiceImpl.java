@@ -1,9 +1,12 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
+import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.exception.UserNotFoundException;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
+import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
+import com.utilityhub.apartmentutilityhub.repository.UserRepo;
 import com.utilityhub.apartmentutilityhub.service.ApartmentService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,16 +23,18 @@ import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApa
 public class ApartmentServiceImpl implements ApartmentService {
 
     private final ApartmentRepo apartmentRepo;
+    private final UserRepo userRepo;
 
-    public ApartmentServiceImpl(ApartmentRepo apartmentRepo) {
+    public ApartmentServiceImpl(ApartmentRepo apartmentRepo, UserRepo userRepo) {
         this.apartmentRepo = apartmentRepo;
+        this.userRepo = userRepo;
     }
 
 
     @Override
     public List<ApartmentDTO> findAllApartments() {
-       List<Apartment> apartments = apartmentRepo.findAll();
-       return apartments.stream().map((apartment) -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
+        List<Apartment> apartments = apartmentRepo.findAll();
+        return apartments.stream().map((apartment) -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
 
     }
 
@@ -42,12 +47,6 @@ public class ApartmentServiceImpl implements ApartmentService {
     @Override
     public Apartment findByApartmentId(long apartmentId) {
         return null;
-    }
-
-
-    @Override
-    public void deleteApartment(Long apartmentId) {
-
     }
 
 
@@ -66,9 +65,20 @@ public class ApartmentServiceImpl implements ApartmentService {
         );
     }
 
-    // Delete apartment by ID
-    public void deleteApartmentById(Long id) {
-        apartmentRepo.deleteById(id);
-    }
+    @Override
+    public void userIdToApartment(Integer apartmentNumber, Long userID) {
+        ApartmentDTO apartment = apartmentRepo.findApartmentByApartmentNumber(apartmentNumber)
+                .orElseThrow(() -> new RuntimeException("Apartment number not found!"));
 
+        User user = userRepo.findById(userID)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        apartment.setUserId(user.getId());
+
+        Apartment apartmentDTO = mapToApartment(apartment);
+
+        apartmentRepo.save(apartmentDTO);
+
+
+    }
 }
