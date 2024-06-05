@@ -9,4 +9,7 @@ public interface UserService {
 
     User createUser(String username, String password, String firstName, String lastName, String email, boolean enabled, Set<Long> roleIds);
 
+    UserDTO findUserById(Long userId);
+
+    UserDTO findByUsername(String username);
 }

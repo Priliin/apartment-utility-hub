@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.utilityhub.apartmentutilityhub.mapper.UserMapper.mapToUserDTO;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -47,5 +49,20 @@ public class UserServiceImpl implements UserService {
         userRepo.save(user);
 
         return user;
+    }
+
+    @Override
+    public UserDTO findUserById(Long userId) {
+
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return mapToUserDTO(user);
+    }
+
+    @Override
+    public UserDTO findByUsername(String username) {
+
+        User user = userRepo.getUserByUsername(username);
+        return mapToUserDTO(user);
     }
 }
