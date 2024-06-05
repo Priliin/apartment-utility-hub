@@ -41,7 +41,7 @@ public class    WebSecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/","/error", "/event/**", "/css/**", "/home",
                                 "/templates/**", "/information/**",
-                                "/api/apartmentdata/**", "/apartment/myApartments/**").hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
+                                "/api/apartmentData/**", "/apartment/myApartments/**").hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
                         .requestMatchers( "/event/**", "/apartment/**").hasAnyAuthority("ACCOUNTANT", "ADMIN")
                         .requestMatchers("/**").hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated()

@@ -26,7 +26,7 @@ import java.util.List;
 */
 
 @Controller
-@RequestMapping("/api/apartmentdata")
+@RequestMapping("/api/apartmentData")
 public class ApartmentDataController {
 
     private final ApartmentDataService apartmentDataService;
@@ -57,7 +57,7 @@ public class ApartmentDataController {
             return "utility-water-usage-create";
         }
 //        apartmentDataService.saveApartmentData(apartmentData); // TODO: Save function needs to be fixed
-        return "redirect:/api/apartmentdata";
+        return "redirect:/api/apartmentData";
     }
 
     @GetMapping("/addGas")
@@ -70,6 +70,6 @@ public class ApartmentDataController {
             return "utility-gas-usage-create";
         }
 //        apartmentDataService.saveApartmentData(apartmentData); // TODO: Save function needs to be fixed
-        return "redirect:/api/apartmentdata";
+        return "redirect:/api/apartmentData";
     }
 }
