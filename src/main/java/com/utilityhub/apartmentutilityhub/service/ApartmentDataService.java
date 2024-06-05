@@ -25,4 +25,6 @@ public interface ApartmentDataService {
 
     //
     Apartment saveApartmentData(ApartmentDataDTO apartmentDataDTO);
+
+    ApartmentDataDTO findByApartmentId(Long apartmentId);
 }

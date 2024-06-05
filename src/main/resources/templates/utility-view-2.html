@@ -1,0 +1,43 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Apartment details</title>
+</head>
+<body class="d-flex flex-column">
+
+<section layout:fragment = "body">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder" th:text="${apartmentNumber}"></h1>
+            <p class="lead mb-0">Apartment Utilities</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Apartment information</h2>
+                <div  class="card mb-4">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${'Date added: ' + apartment.date}"></p>
+                        <p class="card-text" th:text="${'Cold water usage: ' + apartment.coldWaterUsage}"></p>
+                        <p class="card-text" th:text="${'Hot water usage: ' + apartment.hotWaterUsage}"></p>
+                        <p class="card-text" th:text="${'Gas usage: ' + apartment.gasUsage}"></p>
+                        <a class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')" th:href="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}">Edit information</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentData;
+
 @Service
 public class ApartmentDataServiceImpl implements ApartmentDataService {
 
@@ -101,4 +103,13 @@ public class ApartmentDataServiceImpl implements ApartmentDataService {
     public Apartment saveApartmentData(ApartmentDataDTO apartmentDataDTO) {
         return null;
     }
+
+    @Override
+    public ApartmentDataDTO findByApartmentId(Long apartmentId) {
+        ApartmentData apartmentData = apartmentDataRepo.findById(apartmentId)
+                .orElseThrow(() -> new RuntimeException("Apartment number not found"));
+
+        return mapToApartmentDataDTO(apartmentData);
+    }
+
 }

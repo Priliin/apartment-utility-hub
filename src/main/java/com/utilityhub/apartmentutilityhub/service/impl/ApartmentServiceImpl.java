@@ -61,7 +61,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     @Override
     public ApartmentDTO findApartmentByApartmentNumber(Integer apartmentNumber) {
         return apartmentRepo.findApartmentByApartmentNumber(apartmentNumber).orElseThrow(
-                () -> new UserNotFoundException("Apartment number " + apartmentNumber + " not found!")
+                () -> new RuntimeException("Apartment number " + apartmentNumber + " not found!")
         );
     }
 

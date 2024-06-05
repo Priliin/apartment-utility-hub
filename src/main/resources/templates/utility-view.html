@@ -26,16 +26,7 @@
             </div>
 
             <div class="row gx-5">
-                <div>
-                    <form th:action="@{/apartment/search}"
-                          class="form-inline my-2 my-lg-0 mb-3">
-                        <input name="query"
-                               class="form-control mr-sm-2 mb-5"
-                               type="search"
-                               placeholder="Search by apa"
-                               aria-label="Search">
-                    </form>
-                </div>
+
                 <h2>Water usage: </h2>
                 <div th:each = "apartmentdata :${apartmentDataList}"
                      class="col-lg-6 mb-2">

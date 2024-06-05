@@ -35,25 +35,18 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                         <li sec:authorize="hasAuthority('ADMIN')">
                             <a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
                         <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item" th:href = "@{/apartment/myApartments}">My apartments</a></li>
+                            <a class="dropdown-item" th:href = "@{/apartment/myApartments}">My apartments</a>
+
+                            <a class="dropdown-item"
+                               th:href = "@{/api/apartmentdata/addWater}">Add water usage</a>
+                            <a class="dropdown-item"
+                               th:href = "@{/api/apartmentdata/addGas}">Add gas usage</a>
+                </li>
                     </ul>
+
                 </li>
 
-                <!-- Utilities -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="utilitiesBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Utilities</a>
-                    <ul class="dropdown-menu dropdown-menu-end"
-                        aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/all}">View utilities</a></li>
-                        <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/addWater}">Add water usage</a></li>
-                        <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/addGas}">Add gas usage</a></li>
-                    </ul>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">

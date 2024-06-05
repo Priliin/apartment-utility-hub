@@ -18,29 +18,26 @@
             </div>
 
             <div class="row gx-5">
-                <div>
-                    <form th:action="@{/apartment/myApartments/search}"
-                          class="form-inline my-2 my-lg-0 mb-3">
-                        <input name="query"
-                               class="form-control mr-sm-2 mb-5"
-                               type="search"
-                               placeholder="Search by last name"
-                               aria-label="Search">
-                    </form>
-                </div>
 
                 <h2>Apartments: </h2>
 
-                <div th:each = "apartment :${apartments}"
-                     class="col-lg-6 mb-2">
-                    <div class="position-relative mb-5">
-                        <a th:text= "${'Nr: ' + apartment.apartmentNumber}"
+                <div class = "row gx-5">
+                <div th:each = "apartment :${apartments}" class="col-lg-6 mb-2">
+                    <div class = "card mb-4">
+                    <div class="card-body">
+                        <a th:text= "${'Apartment: ' + apartment.apartmentNumber}"
                            class="h3 fw-bolder text-decoration-none link-dark stretched-link"
                            th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
+                        <br>
+                       <br>
+                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">View information</a>
+                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">View utilities</a>
+                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">Add utilities usage</a>
                     </div>
                 </div>
-
+                </div>
             </div>
+        </div>
         </div>
     </section>
 </main>

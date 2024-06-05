@@ -5,6 +5,7 @@ import com.utilityhub.apartmentutilityhub.dto.ApartmentDataDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 import com.utilityhub.apartmentutilityhub.service.ApartmentDataService;
+import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,17 +30,21 @@ import java.util.List;
 public class ApartmentDataController {
 
     private final ApartmentDataService apartmentDataService;
+    private final ApartmentServiceImpl apartmentService;
 
     @Autowired
-    public ApartmentDataController(ApartmentDataService apartmentDataService) {
+    public ApartmentDataController(ApartmentDataService apartmentDataService, ApartmentServiceImpl apartmentService) {
         this.apartmentDataService = apartmentDataService;
+        this.apartmentService = apartmentService;
     }
 
-    @GetMapping("/all")
-    public String getAllApartmentData(ModelMap modelMap) {
-        List<ApartmentDataDTO> apartmentData = apartmentDataService.findAllApartments();
-        modelMap.addAttribute("apartments", apartmentData);
-        return "utility-view";
+    @GetMapping("/{apartmentNumber}")
+    public String getApartmentData(@PathVariable() int apartmentNumber, ModelMap modelMap) {
+       ApartmentDTO apartmentDTO = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+       ApartmentDataDTO apartmentDataDTO = apartmentDataService.findByApartmentId(apartmentDTO.getId());
+
+        modelMap.addAttribute("apartment", apartmentDataDTO);
+        return "utility-view-2";
     }
 
     @GetMapping("/addWater")
@@ -66,30 +71,5 @@ public class ApartmentDataController {
         }
 //        apartmentDataService.saveApartmentData(apartmentData); // TODO: Save function needs to be fixed
         return "redirect:/api/apartmentdata";
-    }
-
-
-    @PostMapping
-    public ResponseEntity<ApartmentData> addApartmentDataWater(@RequestBody ApartmentData apartmentData) {
-        ApartmentData newApartmentData = apartmentDataService.addApartmentData(apartmentData);
-        return new ResponseEntity<>(newApartmentData, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{apartmentId}")
-    public ResponseEntity<List<ApartmentData>> getApartmentDataByApartmentId(@PathVariable Apartment id) {
-        List<ApartmentData> apartmentDataList = apartmentDataService.getApartmentDataByApartmentId(id.getId());
-        return new ResponseEntity<>(apartmentDataList, HttpStatus.OK);
-    }
-
-    @PutMapping("/{apartmentId}")
-    public ResponseEntity<ApartmentData> updateApartmentData(@PathVariable Long id, @RequestBody ApartmentData apartmentData) {
-        ApartmentData updatedApartmentData = apartmentDataService.updateApartmentData(id, apartmentData);
-        return new ResponseEntity<>(updatedApartmentData, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{apartmentId}")
-    public ResponseEntity<?> deleteApartmentData(@PathVariable Long id) {
-        apartmentDataService.deleteApartmentData(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
