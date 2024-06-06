@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentData;
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
 
 
@@ -59,9 +60,6 @@ public class ApartmentDataController {
 
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
         apartmentService.dataIdToApartment(apartment.getApartmentNumber(), apartmentData.getDataId());
-
-        ApartmentDataDTO dataDTO = mapToApartmentDataDTO(apartmentData);
-        apartmentDataService.saveApartmentData(dataDTO);
         return "redirect:/apartment/myApartments";
     }
 
@@ -70,10 +68,7 @@ public class ApartmentDataController {
        ApartmentDTO apartmentDTO = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
         ApartmentDataDTO apartmentDataDTO = apartmentDataService.findByDataId(apartmentDTO.getDataId());
 
-
         modelMap.addAttribute("apartmentData", apartmentDataDTO);
         return "utility-view";
-
-        //TODO: Gas usage bug, value = null
     }
 }

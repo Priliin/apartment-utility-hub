@@ -17,32 +17,17 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentData;
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
 
 @Service
 public class ApartmentDataServiceImpl implements ApartmentDataService {
 
-    private ApartmentDataRepo apartmentDataRepo;
-    private ApartmentRepo apartmentRepository;
+    private final ApartmentDataRepo apartmentDataRepo;
+
 
     @Autowired
-    public ApartmentDataServiceImpl(ApartmentRepo apartmentRepository, ApartmentDataRepo apartmentDataRepo) {
-        this.apartmentRepository = apartmentRepository;
+    public ApartmentDataServiceImpl(ApartmentDataRepo apartmentDataRepo) {
         this.apartmentDataRepo = apartmentDataRepo;
-    }
-
-
-    private ApartmentDataDTO mapToApartmentDataDTO(ApartmentData apartmentData) {
-        return ApartmentDataDTO.builder()
-                .hotWaterUsage(apartmentData.getHotWaterUsage())
-                .coldWaterUsage(apartmentData.getColdWaterUsage())
-                .date(apartmentData.getDate())
-                .build();
-    }
-
-
-    @Override
-    public Apartment saveApartmentData(ApartmentDataDTO apartmentDataDTO) {
-        return null;
     }
 
     @Override

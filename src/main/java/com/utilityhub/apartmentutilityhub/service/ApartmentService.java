@@ -14,7 +14,6 @@ public interface ApartmentService {
 
     Apartment saveApartment(ApartmentDTO apartmentDTO);
 
-    Apartment findByApartmentId(long apartmentId);
 
     List<ApartmentDTO> searchApartmentByOwnersLastName(String query);
     ApartmentDTO findApartmentByApartmentNumber(Integer apartmentNumber);

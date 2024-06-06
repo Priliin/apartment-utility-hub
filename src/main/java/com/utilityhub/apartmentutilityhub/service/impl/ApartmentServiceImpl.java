@@ -49,12 +49,6 @@ public class ApartmentServiceImpl implements ApartmentService {
     }
 
     @Override
-    public Apartment findByApartmentId(long apartmentId) {
-        return null;
-    }
-
-
-    @Override
     public List<ApartmentDTO> searchApartmentByOwnersLastName(String query) {
         List<Apartment> apartments = apartmentRepo.searchByOwnersLastName(query);
         return apartments.stream().map(apartment -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
