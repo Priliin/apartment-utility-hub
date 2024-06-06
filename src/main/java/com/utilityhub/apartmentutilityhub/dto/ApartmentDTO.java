@@ -23,5 +23,6 @@ public class ApartmentDTO {
     private Integer apartmentNumber;
 
     private Long userId;
+    private Long dataId;
 
 }

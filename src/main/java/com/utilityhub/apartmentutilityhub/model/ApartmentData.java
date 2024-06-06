@@ -2,6 +2,7 @@ package com.utilityhub.apartmentutilityhub.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDate;
 
 @Getter
@@ -17,10 +18,7 @@ public class ApartmentData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dataId;
-
-    @ManyToOne
-    @JoinColumn(name = "id", nullable = false) // Viitab 'apartmentId' veerule tabelis 'apartments'
-    private Apartment apartment;
+    @CreationTimestamp
     private LocalDate date;
     private Double hotWaterUsage;
     private Double coldWaterUsage;

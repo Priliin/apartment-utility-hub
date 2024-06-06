@@ -5,7 +5,7 @@
         xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout}">
 <head>
-        <title>Apartment list</title>
+        <title>My apartments</title>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -25,14 +25,15 @@
                 <div th:each = "apartment :${apartments}" class="col-lg-6 mb-2">
                     <div class = "card mb-4">
                     <div class="card-body">
-                        <a th:text= "${'Apartment: ' + apartment.apartmentNumber}"
-                           class="h3 fw-bolder text-decoration-none link-dark stretched-link"
-                           th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}"></a>
+                        <a class="h3 bold text-black" th:text= "${'Apartment: ' + apartment.apartmentNumber}"></a>
                         <br>
                        <br>
-                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">View information</a>
-                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">View utilities</a>
-                        <a class="btn btn-primary" th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">Add utilities usage</a>
+                        <a class="btn btn-primary mb-2"
+                           th:href="@{/apartment/myApartments/{apartmentId}(apartmentId=${apartment.apartmentNumber})}">View information</a>
+                        <a class="btn btn-primary mb-2"
+                           th:href="@{/api/apartmentData/viewUtilities/{apartmentNumber}(apartmentNumber=${apartment.apartmentNumber})}">View utilities</a>
+                        <a class="btn btn-primary mb-2"
+                           th:href="@{/api/apartmentData/add/{apartmentNumber}(apartmentNumber=${apartment.apartmentNumber})}">Add utilities usage</a>
                     </div>
                 </div>
                 </div>

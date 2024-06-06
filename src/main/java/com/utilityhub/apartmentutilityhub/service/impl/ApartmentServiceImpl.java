@@ -4,7 +4,9 @@ import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.exception.UserNotFoundException;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
+import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 import com.utilityhub.apartmentutilityhub.model.User;
+import com.utilityhub.apartmentutilityhub.repository.ApartmentDataRepo;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
 import com.utilityhub.apartmentutilityhub.repository.UserRepo;
 import com.utilityhub.apartmentutilityhub.service.ApartmentService;
@@ -24,10 +26,12 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     private final ApartmentRepo apartmentRepo;
     private final UserRepo userRepo;
+    private final ApartmentDataRepo apartmentDataRepo;
 
-    public ApartmentServiceImpl(ApartmentRepo apartmentRepo, UserRepo userRepo) {
+    public ApartmentServiceImpl(ApartmentRepo apartmentRepo, UserRepo userRepo, ApartmentDataRepo apartmentDataRepo) {
         this.apartmentRepo = apartmentRepo;
         this.userRepo = userRepo;
+        this.apartmentDataRepo = apartmentDataRepo;
     }
 
 
@@ -79,6 +83,20 @@ public class ApartmentServiceImpl implements ApartmentService {
 
         apartmentRepo.save(apartmentDTO);
 
+
+    }
+
+    @Override
+    public void dataIdToApartment(Integer apartmentNumber, Long dataId) {
+        ApartmentDTO apartmentDTO = apartmentRepo.findApartmentByApartmentNumber(apartmentNumber)
+                .orElseThrow(() -> new RuntimeException("Apartment not found"));
+
+        ApartmentData data = apartmentDataRepo.findById(dataId)
+                .orElseThrow(() -> new RuntimeException("Data by ID not found"));
+
+        apartmentDTO.setDataId(data.getDataId());
+        Apartment apartment = mapToApartment(apartmentDTO);
+        apartmentRepo.save(apartment);
 
     }
 }

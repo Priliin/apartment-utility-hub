@@ -2,28 +2,18 @@ package com.utilityhub.apartmentutilityhub.controller;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDataDTO;
-import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 import com.utilityhub.apartmentutilityhub.service.ApartmentDataService;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
 
-
-/*
-    addApartmentData: POST päring kommunaalnäitude andmete lisamiseks.
-    getApartmentDataByApartmentId: GET päring kommunaalnäitude andmete saamiseks korteri ID järgi.
-    updateApartmentData: PUT päring kommunaalnäitude andmete uuendamiseks.
-    deleteApartmentData: DELETE päring kommunaalnäitude andmete kustutamiseks.
-*/
 
 @Controller
 @RequestMapping("/api/apartmentData")
@@ -38,38 +28,52 @@ public class ApartmentDataController {
         this.apartmentService = apartmentService;
     }
 
-    @GetMapping("/{apartmentNumber}")
+
+    @GetMapping("/add/{apartmentNumber}")
+    public String addDataForm(@PathVariable("apartmentNumber") Integer apartmentNumber,
+                               ModelMap model){
+
+        ApartmentData apartmentData = new ApartmentData();
+        Integer number = apartmentService.findApartmentByApartmentNumber(apartmentNumber).getApartmentNumber();
+
+        model.addAttribute("apartmentData", apartmentData);
+        model.addAttribute("apartmentNumber", number);
+        return "usage-create";
+
+    }
+
+    @PostMapping("/add/{apartmentNumber}")
+    public String addData(@Valid @ModelAttribute
+                          ApartmentDataDTO apartmentDataDTO,
+                          BindingResult result,
+                          @PathVariable("apartmentNumber") Integer apartmentNumber, ModelMap model){
+
+        if (result.hasErrors()) {
+            model.addAttribute("apartmentData", apartmentDataDTO);
+            return "usage-create";
+        }
+        ApartmentData apartmentData = apartmentDataService
+                .createApartmentData(apartmentDataDTO.getHotWaterUsage()
+                        ,apartmentDataDTO.getColdWaterUsage()
+                        ,apartmentDataDTO.getGasUsage());
+
+        ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+        apartmentService.dataIdToApartment(apartment.getApartmentNumber(), apartmentData.getDataId());
+
+        ApartmentDataDTO dataDTO = mapToApartmentDataDTO(apartmentData);
+        apartmentDataService.saveApartmentData(dataDTO);
+        return "redirect:/apartment/myApartments";
+    }
+
+    @GetMapping("/viewUtilities/{apartmentNumber}")
     public String getApartmentData(@PathVariable() int apartmentNumber, ModelMap modelMap) {
        ApartmentDTO apartmentDTO = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
-       ApartmentDataDTO apartmentDataDTO = apartmentDataService.findByApartmentId(apartmentDTO.getId());
+        ApartmentDataDTO apartmentDataDTO = apartmentDataService.findByDataId(apartmentDTO.getDataId());
 
-        modelMap.addAttribute("apartment", apartmentDataDTO);
-        return "utility-view-2";
-    }
 
-    @GetMapping("/addWater")
-    public String addApartmentDataWater(@Valid @ModelAttribute("apartmentData")
-                                   ApartmentDTO apartmentDTO,
-                                        BindingResult result,
-                                        ModelMap model) {
-        if (result.hasErrors()) {
-            model.addAttribute("apartmentData", apartmentDTO);
-            return "utility-water-usage-create";
-        }
-//        apartmentDataService.saveApartmentData(apartmentData); // TODO: Save function needs to be fixed
-        return "redirect:/api/apartmentData";
-    }
+        modelMap.addAttribute("apartmentData", apartmentDataDTO);
+        return "utility-view";
 
-    @GetMapping("/addGas")
-    public String addApartmentData(@Valid @ModelAttribute("apartmentData")
-                                   ApartmentDTO apartmentDTO,
-                                   BindingResult result,
-                                   ModelMap model) {
-        if (result.hasErrors()) {
-            model.addAttribute("apartmentData", apartmentDTO);
-            return "utility-gas-usage-create";
-        }
-//        apartmentDataService.saveApartmentData(apartmentData); // TODO: Save function needs to be fixed
-        return "redirect:/api/apartmentData";
+        //TODO: Gas usage bug, value = null
     }
 }
