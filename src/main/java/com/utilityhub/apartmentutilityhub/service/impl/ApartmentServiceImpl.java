@@ -74,23 +74,8 @@ public class ApartmentServiceImpl implements ApartmentService {
         apartment.setUserId(user.getId());
 
         Apartment apartmentDTO = mapToApartment(apartment);
-
         apartmentRepo.save(apartmentDTO);
 
-
-    }
-
-    @Override
-    public void dataIdToApartment(Integer apartmentNumber, Long dataId) {
-        ApartmentDTO apartmentDTO = apartmentRepo.findApartmentByApartmentNumber(apartmentNumber)
-                .orElseThrow(() -> new RuntimeException("Apartment not found"));
-
-        ApartmentData data = apartmentDataRepo.findById(dataId)
-                .orElseThrow(() -> new RuntimeException("Data by ID not found"));
-
-        apartmentDTO.setDataId(data.getDataId());
-        Apartment apartment = mapToApartment(apartmentDTO);
-        apartmentRepo.save(apartment);
 
     }
 }

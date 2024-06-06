@@ -12,6 +12,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentData;
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
 
@@ -56,19 +60,28 @@ public class ApartmentDataController {
         ApartmentData apartmentData = apartmentDataService
                 .createApartmentData(apartmentDataDTO.getHotWaterUsage()
                         ,apartmentDataDTO.getColdWaterUsage()
-                        ,apartmentDataDTO.getGasUsage());
+                        ,apartmentDataDTO.getGasUsage(), apartmentDataDTO.getApartmentId());
 
         ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
-        apartmentService.dataIdToApartment(apartment.getApartmentNumber(), apartmentData.getDataId());
+        apartmentDataService.apartmentIdToData(apartment.getApartmentNumber(), apartmentData.getDataId());
+        apartmentDataService.saveData(apartmentData);
+
         return "redirect:/apartment/myApartments";
     }
 
     @GetMapping("/viewUtilities/{apartmentNumber}")
     public String getApartmentData(@PathVariable() int apartmentNumber, ModelMap modelMap) {
-       ApartmentDTO apartmentDTO = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
-        ApartmentDataDTO apartmentDataDTO = apartmentDataService.findByDataId(apartmentDTO.getDataId());
+        List<ApartmentData> allUtilities = apartmentDataService.findAll();
+        List<ApartmentData> utilities = new ArrayList<>();
+        ApartmentDTO apartmentDTO = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
 
-        modelMap.addAttribute("apartmentData", apartmentDataDTO);
+        for(ApartmentData data:allUtilities){
+            if(Objects.equals(data.getApartmentId(), apartmentDTO.getId())){
+                utilities.add(data);
+            }
+        }
+
+        modelMap.addAttribute("apartmentData", utilities);
         return "utility-view";
     }
 }

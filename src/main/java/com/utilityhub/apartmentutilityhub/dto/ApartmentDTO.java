@@ -21,8 +21,6 @@ public class ApartmentDTO {
     private String ownersEmail;
     @NotNull(message = "Enter the owners apartment number!")
     private Integer apartmentNumber;
-
     private Long userId;
-    private Long dataId;
 
 }

@@ -29,4 +29,5 @@
         private Double coldWaterUsage;
         @NotNull(message = "Enter the gas gauge reading!")
         private Double gasUsage;
+        private Long apartmentId;
     }

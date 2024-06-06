@@ -12,6 +12,7 @@ public class ApartmentDataMapper {
                 .hotWaterUsage(apartmentDataDTO.getHotWaterUsage())
                 .coldWaterUsage(apartmentDataDTO.getColdWaterUsage())
                 .gasUsage(apartmentDataDTO.getGasUsage())
+                .apartmentId(apartmentDataDTO.getApartmentId())
                 .build();
     }
 
@@ -22,6 +23,7 @@ public class ApartmentDataMapper {
                 .hotWaterUsage(apartmentData.getHotWaterUsage())
                 .coldWaterUsage(apartmentData.getColdWaterUsage())
                 .gasUsage(apartmentData.getGasUsage())
+                .apartmentId(apartmentData.getApartmentId())
                 .build();
     }
 }

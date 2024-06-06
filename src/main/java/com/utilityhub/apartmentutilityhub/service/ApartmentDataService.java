@@ -9,7 +9,13 @@ import java.util.List;
 public interface ApartmentDataService {
 
 
-    ApartmentDataDTO findByDataId(Long apartmentId);
+    ApartmentData createApartmentData(Double hotWaterUsage, Double coldWaterUsage, Double gasUsage, Long apartmentId);
 
-    ApartmentData createApartmentData(Double hotWaterUsage, Double coldWaterUsage, Double gasUsage);
+    void apartmentIdToData(Integer apartmentNumber, Long dataId);
+
+    ApartmentData findByApartmentId(Long apartmentId);
+
+    List<ApartmentData> findAll();
+
+    void saveData(ApartmentData apartmentData);
 }

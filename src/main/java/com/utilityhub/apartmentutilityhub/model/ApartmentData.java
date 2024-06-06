@@ -23,6 +23,7 @@ public class ApartmentData {
     private Double hotWaterUsage;
     private Double coldWaterUsage;
     private Double gasUsage;
+    private Long apartmentId;
 }
 
 

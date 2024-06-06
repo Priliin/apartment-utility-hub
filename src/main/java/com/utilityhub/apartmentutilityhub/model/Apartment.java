@@ -26,7 +26,6 @@ public class Apartment {
     private String ownersPhone;
     private String ownersEmail;
     private Long userId;
-    private Long dataId;
 
 
 }

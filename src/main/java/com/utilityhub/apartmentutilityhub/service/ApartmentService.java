@@ -20,5 +20,4 @@ public interface ApartmentService {
 
     void userIdToApartment(Integer apartmentNumber, Long userID);
 
-    void dataIdToApartment(Integer apartmentNumber, Long dataId);
 }
