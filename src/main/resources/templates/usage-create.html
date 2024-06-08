@@ -1,0 +1,64 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title>Add Utilities</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment = "body" class="py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bolder">Add Utilities usage</h1>
+        </div>
+        <div class ="container">
+            <form role = "form" method = "post" th:action="@{/api/apartmentData/add/{apartmentNumber}(apartmentNumber=${apartmentNumber})}" th:object = "${apartmentData}" >
+                <div class="form-row">
+
+                   <div class="form-group col-md-3">
+                        <label for="hotWaterUsage">Hot water usage</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="hotWaterUsage"
+                                name = "Hot water usage"
+                                th:field = "*{hotWaterUsage}"
+                                placeholder="Enter the hot water usage">
+                        <p th:if="${#fields.hasErrors('hotWaterUsage')}" class="text-danger" th:errors="*{hotWaterUsage}"></p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="coldWaterUsage">Cold water usage</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="coldWaterUsage"
+                                name = "coldWaterUsage"
+                                th:field = "*{coldWaterUsage}"
+                                placeholder="Enter the cold water usage">
+                        <p th:if="${#fields.hasErrors('coldWaterUsage')}" class="text-danger" th:errors="*{coldWaterUsage}"></p>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="gasUsage">Gas usage</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="gasUsage"
+                                name = "gasUsage"
+                                th:field = "*{gasUsage}"
+                                placeholder="Enter the gas usage">
+                        <p th:if="${#fields.hasErrors('gasUsage')}" class="text-danger" th:errors="*{gasUsage}"></p>
+                    </div>
+
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

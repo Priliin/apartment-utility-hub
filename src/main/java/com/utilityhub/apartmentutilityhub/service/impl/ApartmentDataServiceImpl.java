@@ -16,89 +16,62 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentData;
+import static com.utilityhub.apartmentutilityhub.mapper.ApartmentDataMapper.mapToApartmentDataDTO;
+
 @Service
 public class ApartmentDataServiceImpl implements ApartmentDataService {
 
-    private ApartmentDataRepo apartmentDataRepo;
-    private ApartmentRepo apartmentRepository;
+    private final ApartmentDataRepo apartmentDataRepo;
+    private final ApartmentRepo apartmentRepo;
+
 
     @Autowired
-    public ApartmentDataServiceImpl(ApartmentRepo apartmentRepository, ApartmentDataRepo apartmentDataRepo) {
-        this.apartmentRepository = apartmentRepository;
+    public ApartmentDataServiceImpl(ApartmentDataRepo apartmentDataRepo, ApartmentRepo apartmentRepo) {
         this.apartmentDataRepo = apartmentDataRepo;
+        this.apartmentRepo = apartmentRepo;
     }
 
     @Override
-    public List<ApartmentDataDTO> findAllApartments() {
-        List<ApartmentData> apartmentDataDTO = apartmentDataRepo.findAll();
+    public ApartmentData createApartmentData(Double hotWaterUsage, Double coldWaterUsage, Double gasUsage, Long apartmentId) {
+        ApartmentData data = new ApartmentData();
+        data.setHotWaterUsage(hotWaterUsage);
+        data.setColdWaterUsage(coldWaterUsage);
+        data.setGasUsage(gasUsage);
 
-        return apartmentDataDTO
-                .stream()
-                .map((apartmentDataDTOList) -> mapToApartmentDataDTO(apartmentDataDTOList))
-                .collect(Collectors.toList());
-    }
+        apartmentDataRepo.save(data);
 
-    private ApartmentDataDTO mapToApartmentDataDTO(ApartmentData apartmentData) {
-        return ApartmentDataDTO.builder()
-                .id(apartmentData.getApartment())
-                .hotWaterUsage(apartmentData.getHotWaterUsage())
-                .coldWaterUsage(apartmentData.getColdWaterUsage())
-                .date(apartmentData.getDate())
-                .build();
-    }
-
-    public void addApartmentData(Integer id, ApartmentData apartmentData) {
-        Optional<ApartmentDTO> apartment = apartmentRepository.findApartmentByApartmentNumber(id);
-        if (apartment == null) {
-            throw new RuntimeException("No apartment found with id: " + id);
-        }
-        ApartmentDataDTO apartmentData1 = mapToApartmentDataDTO(apartmentData);
-        apartmentData1.setHotWaterUsage(apartmentData.getHotWaterUsage());
+        return data;
     }
 
     @Override
-    public ApartmentData addApartmentData(ApartmentData apartmentData) {
-        return null;
+    public void apartmentIdToData(Integer apartmentNumber, Long dataId) {
+        ApartmentDTO apartment = apartmentRepo.findApartmentByApartmentNumber(apartmentNumber)
+                .orElseThrow(() -> new RuntimeException("Apartment number not found"));
+
+        ApartmentData apartmentData = apartmentDataRepo.findById(dataId)
+                .orElseThrow(() -> new RuntimeException("data not found"));
+
+        apartmentData.setApartmentId(apartment.getId());
+        apartmentDataRepo.save(apartmentData);
+
     }
 
     @Override
-    public List<ApartmentData> getApartmentDataByApartmentId(Long apartmentId) {
-        return List.of();
-    }
+    public ApartmentData findByApartmentId(Long apartmentId) {
 
-
-    @Override
-    public ApartmentData updateApartmentData(Long id, ApartmentData apartmentData) {
-        // Retrieve the apartment entity from the repository using the provided ID
-        Apartment apartment = apartmentRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Apartment not found with id: " + id));
-
-        // Update the apartment data with the new values
-       
-        // Repeat this for all fields you want to update
-
-        // Save the updated apartment entity
-        apartmentRepository.save(apartment);
-        return apartmentData;
-    }
-
-
-    @Override
-    public void deleteApartmentData(Long apartmentId) {
+        return mapToApartmentData(apartmentDataRepo.findByApartmentId(apartmentId));
     }
 
     @Override
-    public List<ApartmentData> getAllApartmentData() {
-        return List.of();
+    public List<ApartmentData> findAll() {
+        List<ApartmentData> allUtils = apartmentDataRepo.findAll();
+        return allUtils;
     }
 
     @Override
-    public ApartmentData getApartmentDataById(Long apartmentId, Long dataId) {
-        return null;
+    public void saveData(ApartmentData apartmentData) {
+        apartmentDataRepo.save(apartmentData);
     }
 
-    @Override
-    public Apartment saveApartmentData(ApartmentDataDTO apartmentDataDTO) {
-        return null;
-    }
 }

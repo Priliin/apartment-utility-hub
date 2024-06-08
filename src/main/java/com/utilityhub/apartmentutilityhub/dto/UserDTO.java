@@ -26,8 +26,6 @@ public class UserDTO {
     private String lastName;
     private boolean enabled;
 
-    @Setter
-    private Integer apartmentNumber;
 
     private Set<Long> roles;
 

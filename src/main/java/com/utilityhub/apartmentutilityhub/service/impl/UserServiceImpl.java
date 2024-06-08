@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.utilityhub.apartmentutilityhub.mapper.UserMapper.mapToUserDTO;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -28,8 +30,8 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void createUser(String username, String password, String firstName, String lastName,
-                           String email,boolean enabled, Set<Long> roleIds) {
+    public User createUser(String username, String password, String firstName, String lastName,
+                              String email, boolean enabled, Set<Long> roleIds) {
         User user = new User();
 
         user.setUsername(username);
@@ -47,6 +49,23 @@ public class UserServiceImpl implements UserService {
         }
         user.setRoles(userRoles);
         userRepo.save(user);
+
+        return user;
+    }
+
+    @Override
+    public UserDTO findUserById(Long userId) {
+
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return mapToUserDTO(user);
+    }
+
+    @Override
+    public UserDTO findByUsername(String username) {
+
+        User user = userRepo.getUserByUsername(username);
+        return mapToUserDTO(user);
     }
     @Override
     public List<UserDTO> getAllUsers() {

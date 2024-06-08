@@ -2,18 +2,28 @@ package com.utilityhub.apartmentutilityhub.controller;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.dto.EventDTO;
+import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
+import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
 import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
+import com.utilityhub.apartmentutilityhub.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static com.utilityhub.apartmentutilityhub.security.WebSecurityConfig.getUserByUsername;
 
 // Resource is the endpoint, interaction with the user
 @Controller
@@ -21,9 +31,36 @@ import java.util.List;
 public class ApartmentController {
 
     private final ApartmentServiceImpl apartmentService;
+    private final UserServiceImpl userService;
 
-    public ApartmentController(ApartmentServiceImpl apartmentService) {
+    public ApartmentController(ApartmentServiceImpl apartmentService, UserServiceImpl userService) {
         this.apartmentService = apartmentService;
+        this.userService = userService;
+    }
+
+    @GetMapping("/myApartments")
+    public String userApartments( ModelMap model){
+
+        UserDTO user = getUserByUsername(userService);
+
+       List<ApartmentDTO> apartments = apartmentService.findAllApartments();
+       List<ApartmentDTO> userApartments = new ArrayList<>();
+
+       for(ApartmentDTO apartment: apartments){
+           if(Objects.equals(apartment.getUserId(), user.getId())){
+               userApartments.add(apartment);
+           }
+       }
+        model.addAttribute("user", user);
+        model.addAttribute("apartments", userApartments);
+        return "user-apartment-list";
+    }
+    @GetMapping("/myApartments/{apartmentNumber}")
+    public String UserApartmentDetails(@PathVariable("apartmentNumber") int apartmentNumber, ModelMap model){
+        ApartmentDTO apartment = apartmentService.findApartmentByApartmentNumber(apartmentNumber);
+
+        model.addAttribute("apartment", apartment);
+        return "apartment-details";
     }
 
     //Apartment details
@@ -90,13 +127,5 @@ public class ApartmentController {
         apartmentDTO.setId(apartment.getId());
         apartmentService.saveApartment(apartmentDTO);
         return "redirect:/apartment/{apartmentNumber}";
-    }
-
-
-    // Delete apartment
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
-        apartmentService.deleteApartmentById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

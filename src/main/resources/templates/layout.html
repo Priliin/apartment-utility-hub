@@ -45,10 +45,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                                th:href = "@{/api/apartmentdata/all}">View utilities</a></li>
                         <li sec:authorize="hasAuthority('USER')">
                             <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/addWater}">Add water usage</a></li>
+                               th:href = "@{/api/apartmentdata/add}">Add water usage</a></li>
                         <li sec:authorize="hasAuthority('USER')">
                             <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/addGas}">Add gas usage</a></li>
+                               th:href = "@{/api/apartmentdata/add}">Add gas usage</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -63,10 +63,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
                         <li><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                     </ul>
-                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
-                    <a class="nav-link" th:href="@{/users}">Users</a>
-                </li>
+
                 </li>
                 <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
                 <a class="nav-link" th:href="@{/register}">Register</a></li>

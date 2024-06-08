@@ -7,23 +7,23 @@ public class ApartmentDataMapper {
 
     public static ApartmentData mapToApartmentData(ApartmentDataDTO apartmentDataDTO) {
         return ApartmentData.builder()
-                .dataId(apartmentDataDTO.getApartmentDataId())
-                .apartment(apartmentDataDTO.getId())
+                .dataId(apartmentDataDTO.getDataId())
                 .date(apartmentDataDTO.getDate())
                 .hotWaterUsage(apartmentDataDTO.getHotWaterUsage())
                 .coldWaterUsage(apartmentDataDTO.getColdWaterUsage())
                 .gasUsage(apartmentDataDTO.getGasUsage())
+                .apartmentId(apartmentDataDTO.getApartmentId())
                 .build();
     }
 
     public static ApartmentDataDTO mapToApartmentDataDTO(ApartmentData apartmentData) {
         return ApartmentDataDTO.builder()
-                .apartmentDataId(apartmentData.getDataId())
-                .id(apartmentData.getApartment())
+                .dataId(apartmentData.getDataId())
                 .date(apartmentData.getDate())
                 .hotWaterUsage(apartmentData.getHotWaterUsage())
                 .coldWaterUsage(apartmentData.getColdWaterUsage())
                 .gasUsage(apartmentData.getGasUsage())
+                .apartmentId(apartmentData.getApartmentId())
                 .build();
     }
 }
