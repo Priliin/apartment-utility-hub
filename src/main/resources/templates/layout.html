@@ -60,13 +60,14 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
 
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="registerBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
+                    <a class="nav-link dropdown-toggle" sec:authorize="hasAuthority('ADMIN')" id="registerBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li sec:authorize="hasAuthority('ADMIN')" class="dropdown-item">
-                            <a class="dropdown-item" th:href="@{/register}">Register user</a></li>
-
-                        <li sec:authorize="hasAuthority('ADMIN')">
-                            <a class="dropdown-item" th:href = "@{/register/apartmentList}">Register user to apartment</a></li>
+                        <li  class="dropdown-item">
+                            <a class="dropdown-item" th:href="@{/register}">Register user</a>
+                            </li>
+                        <li>
+                            <a class="dropdown-item" th:href = "@{/register/apartmentList}">Register user to apartment</a>
+                        </li>
                     </ul>
 
                 </li>
