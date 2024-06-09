@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static com.utilityhub.apartmentutilityhub.mapper.UserMapper.mapToUserDTO;
@@ -64,5 +66,16 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepo.getUserByUsername(username);
         return mapToUserDTO(user);
+    }
+
+    @Override
+    public List<UserDTO> findAll() {
+        List<User> users = new ArrayList<>(userRepo.findAll());
+        List<UserDTO> usersDTO = new ArrayList<>();
+        for(User user: users){
+            UserDTO userDTO = mapToUserDTO(user);
+            usersDTO.add(userDTO);
+        }
+        return usersDTO;
     }
 }

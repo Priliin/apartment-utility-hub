@@ -1,19 +1,11 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
-import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
-import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.service.impl.ApartmentServiceImpl;
-import com.utilityhub.apartmentutilityhub.service.impl.EventServiceImpl;
 import com.utilityhub.apartmentutilityhub.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -102,7 +94,6 @@ public class ApartmentController {
     @GetMapping("/search")
     public String searchApartments(@RequestParam(value = "query") String query, ModelMap model) {
         List<ApartmentDTO> apartmentsByLastName = apartmentService.searchApartmentByOwnersLastName(query);
-        ;
         model.addAttribute("apartments", apartmentsByLastName);
         return "apartment-list";
     }

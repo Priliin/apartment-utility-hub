@@ -1,8 +1,6 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
-import com.utilityhub.apartmentutilityhub.dto.EventDTO;
 import com.utilityhub.apartmentutilityhub.dto.InformationDTO;
-import com.utilityhub.apartmentutilityhub.model.Event;
 import com.utilityhub.apartmentutilityhub.model.Information;
 import com.utilityhub.apartmentutilityhub.service.impl.InformationServiceImpl;
 import jakarta.validation.Valid;
@@ -17,7 +15,7 @@ import java.util.List;
 @RequestMapping("/information")
 public class InformationController {
 
-    private InformationServiceImpl informationService;
+    private final InformationServiceImpl informationService;
 
     public InformationController(InformationServiceImpl informationService) {
         this.informationService = informationService;

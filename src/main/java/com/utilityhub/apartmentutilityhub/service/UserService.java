@@ -3,6 +3,7 @@ package com.utilityhub.apartmentutilityhub.service;
 import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.model.User;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
     UserDTO findUserById(Long userId);
 
     UserDTO findByUsername(String username);
+
+    List<UserDTO> findAll();
 }
