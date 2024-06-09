@@ -1,5 +1,6 @@
     package com.utilityhub.apartmentutilityhub.dto;
 
+
     import jakarta.validation.constraints.NotNull;
     import lombok.AllArgsConstructor;
     import lombok.Builder;
