@@ -10,14 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import static com.utilityhub.apartmentutilityhub.security.WebSecurityConfig.getUserByUsername;
 
-// Resource is the endpoint, interaction with the user
 @Controller
 @RequestMapping("/apartment")
 public class ApartmentController {

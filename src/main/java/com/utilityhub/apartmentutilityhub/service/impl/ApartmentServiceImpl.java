@@ -1,10 +1,8 @@
 package com.utilityhub.apartmentutilityhub.service.impl;
 
 import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
-import com.utilityhub.apartmentutilityhub.dto.UserDTO;
-import com.utilityhub.apartmentutilityhub.exception.UserNotFoundException;
+import com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper;
 import com.utilityhub.apartmentutilityhub.model.Apartment;
-import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentDataRepo;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;
@@ -12,12 +10,9 @@ import com.utilityhub.apartmentutilityhub.repository.UserRepo;
 import com.utilityhub.apartmentutilityhub.service.ApartmentService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartment;
-import static com.utilityhub.apartmentutilityhub.mapper.ApartmentMapper.mapToApartmentDTO;
 
 
 @Service
@@ -26,19 +21,17 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     private final ApartmentRepo apartmentRepo;
     private final UserRepo userRepo;
-    private final ApartmentDataRepo apartmentDataRepo;
 
     public ApartmentServiceImpl(ApartmentRepo apartmentRepo, UserRepo userRepo, ApartmentDataRepo apartmentDataRepo) {
         this.apartmentRepo = apartmentRepo;
         this.userRepo = userRepo;
-        this.apartmentDataRepo = apartmentDataRepo;
     }
 
 
     @Override
     public List<ApartmentDTO> findAllApartments() {
         List<Apartment> apartments = apartmentRepo.findAll();
-        return apartments.stream().map((apartment) -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
+        return apartments.stream().map(ApartmentMapper::mapToApartmentDTO).collect(Collectors.toList());
 
     }
 
@@ -51,7 +44,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     @Override
     public List<ApartmentDTO> searchApartmentByOwnersLastName(String query) {
         List<Apartment> apartments = apartmentRepo.searchByOwnersLastName(query);
-        return apartments.stream().map(apartment -> mapToApartmentDTO(apartment)).collect(Collectors.toList());
+        return apartments.stream().map(ApartmentMapper::mapToApartmentDTO).collect(Collectors.toList());
 
     }
 

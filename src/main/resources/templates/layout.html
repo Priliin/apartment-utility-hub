@@ -52,14 +52,22 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="reportBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li sec:authorize="hasAuthority('USER')">
+                            <a class="dropdown-item" th:href="@{/report/addMaintenance}">Add Maintenance Ticket</a></li>
+                        <li sec:authorize="hasAuthority('USER')">
+                            <a class="dropdown-item" th:href="@{/report/addManager}">Add Manager Ticket</a></li>
+                            <li sec:authorize="hasAuthority('ACCOUNTANT') or hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/report/maintenance}">Maintenance Tickets</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/report/manager}">Manager Tickets</a></li>
                     </ul>
-
                 </li>
                 <li class="nav-item dropdown">
+
+                        <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                    </ul>
+=======
                     <a class="nav-link dropdown-toggle" sec:authorize="hasAuthority('ADMIN')" id="registerBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li  class="dropdown-item">
@@ -72,7 +80,7 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
 
                 </li>
 
-                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+
             </ul>
         </div>
     </div>
