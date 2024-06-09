@@ -35,7 +35,7 @@ public class User {
                 inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userId", orphanRemoval = false)
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userId")
     private List<Apartment> userApartments = new ArrayList<>();
 
 }

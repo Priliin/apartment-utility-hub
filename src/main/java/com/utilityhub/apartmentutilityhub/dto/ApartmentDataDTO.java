@@ -1,13 +1,10 @@
     package com.utilityhub.apartmentutilityhub.dto;
 
-    import com.utilityhub.apartmentutilityhub.model.Apartment;
-    import jakarta.validation.constraints.NotEmpty;
     import jakarta.validation.constraints.NotNull;
     import lombok.AllArgsConstructor;
     import lombok.Builder;
     import lombok.Data;
     import lombok.NoArgsConstructor;
-    import org.hibernate.annotations.CreationTimestamp;
     import org.springframework.format.annotation.DateTimeFormat;
 
     import java.time.LocalDate;

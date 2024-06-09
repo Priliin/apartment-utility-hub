@@ -6,7 +6,7 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <link th:href="@{/css/styles.css}" rel="stylesheet">
-    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
+    <title layout:title-pattern="CONTENT_TITLE - LAYOUT_TITLE"></title>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
@@ -30,27 +30,18 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                        <a class="dropdown-item" th:href = "@{/apartment/all}">Apartments</a></li>
                         <li sec:authorize="hasAuthority('ADMIN')">
                             <a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
+                        <li sec:authorize="hasAuthority('USER')">
+                            <a class="dropdown-item" th:href = "@{/apartment/myApartments}">My apartments</a>
+                </li>
                     </ul>
+
                 </li>
 
-                <!-- Utilities -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="utilitiesBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Utilities</a>
-                    <ul class="dropdown-menu dropdown-menu-end"
-                        aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/all}">View utilities</a></li>
-                        <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/add}">Add water usage</a></li>
-                        <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item"
-                               th:href = "@{/api/apartmentdata/add}">Add gas usage</a></li>
-                    </ul>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -61,17 +52,21 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="reportBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" th:href = "@{/}">Maintenance</a></li>
-                        <li><a class="dropdown-item" th:href = "@{/}">Manager</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
+                        <li sec:authorize="hasAuthority('USER')">
+                            <a class="dropdown-item" th:href="@{/report/addMaintenance}">Add Maintenance Ticket</a></li>
+                        <li sec:authorize="hasAuthority('USER')">
+                            <a class="dropdown-item" th:href="@{/report/addManager}">Add Manager Ticket</a></li>
+                            <li sec:authorize="hasAuthority('ACCOUNTANT') or hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/report/maintenance}">Maintenance Tickets</a></li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/report/manager}">Manager Tickets</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                        <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                     </ul>
 
-                </li>
-                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
-                <a class="nav-link" th:href="@{/register}">Register</a></li>
-
-                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
     </div>

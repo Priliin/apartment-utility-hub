@@ -1,20 +1,22 @@
-<html
-        xmlns:th="http://thymeleaf.org"
-        xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
-        layout:decorate="~{layout}">
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
 <head>
     <title>Home</title>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
-    <section layout:fragment = "body" class="py-5">
+    <section layout:fragment="body" class="py-5">
 
         <h1>Home page</h1>
 
+        <div th:if="${successMessage}" class="alert alert-success" role="alert">
+            <p th:text="${successMessage}"></p>
+        </div>
+
     </section>
-
 </main>
-
 </body>
 </html>

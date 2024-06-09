@@ -11,9 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static com.utilityhub.apartmentutilityhub.mapper.UserMapper.mapToUserDTO;
 
@@ -66,49 +64,5 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepo.getUserByUsername(username);
         return mapToUserDTO(user);
-    }
-    @Override
-    public List<UserDTO> getAllUsers() {
-        List<User> users = userRepo.findAll();
-        return users.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<UserDTO> getAllUsersWithApartments() {
-        List<User> users = userRepo.findAll();
-        return users.stream()
-                .map(this::convertToUserDTOWithApartments)
-                .collect(Collectors.toList());
-    }
-    private UserDTO convertToUserDTOWithApartments(User user) {
-        UserDTO userDTO = new UserDTO();
-        // Map user information
-        userDTO.setId(user.getId());
-        userDTO.setUsername(user.getUsername());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setFirstName(user.getFirstName());
-        userDTO.setLastName(user.getLastName());
-        userDTO.setEnabled(user.isEnabled());
-        // Map apartment information
-        if (!user.getUserApartments().isEmpty()) {
-            userDTO.setApartmentNumber(user.getUserApartments().get(0).getApartmentNumber());
-        }
-        return userDTO;
-    }
-
-    private UserDTO convertToDTO(User user) {
-        return UserDTO.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .email(user.getEmail())
-                .enabled(user.isEnabled())
-                .roles(user.getRoles().stream().map(Role::getId).collect(Collectors.toSet()))
-                .build();
     }
 }

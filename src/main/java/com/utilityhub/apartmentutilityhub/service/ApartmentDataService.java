@@ -1,7 +1,5 @@
 package com.utilityhub.apartmentutilityhub.service;
 
-import com.utilityhub.apartmentutilityhub.dto.ApartmentDataDTO;
-import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.ApartmentData;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.utilityhub.apartmentutilityhub.controller;
 
-import com.utilityhub.apartmentutilityhub.dto.ApartmentDTO;
 import com.utilityhub.apartmentutilityhub.dto.UserDTO;
 import com.utilityhub.apartmentutilityhub.model.User;
 import com.utilityhub.apartmentutilityhub.repository.ApartmentRepo;

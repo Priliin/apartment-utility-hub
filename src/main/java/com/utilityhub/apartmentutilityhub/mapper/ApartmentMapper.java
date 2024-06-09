@@ -6,7 +6,7 @@ import com.utilityhub.apartmentutilityhub.model.Apartment;
 public class ApartmentMapper {
 
     public static Apartment mapToApartment(ApartmentDTO apartment){
-        Apartment apartmentDTO = Apartment.builder()
+        return Apartment.builder()
                 .id(apartment.getId())
                 .ownersFirstName(apartment.getOwnersFirstName())
                 .ownersLastName(apartment.getOwnersLastName())
@@ -15,10 +15,9 @@ public class ApartmentMapper {
                 .apartmentNumber(apartment.getApartmentNumber())
                 .userId(apartment.getUserId())
                 .build();
-        return apartmentDTO;
     }
     public static ApartmentDTO mapToApartmentDTO(Apartment apartment){
-        ApartmentDTO apartmentDTO = ApartmentDTO.builder()
+        return ApartmentDTO.builder()
                 .id(apartment.getId())
                 .ownersFirstName(apartment.getOwnersFirstName())
                 .ownersLastName(apartment.getOwnersLastName())
@@ -27,7 +26,6 @@ public class ApartmentMapper {
                 .apartmentNumber(apartment.getApartmentNumber())
                 .userId(apartment.getUserId())
                 .build();
-        return apartmentDTO;
 
     }
 }

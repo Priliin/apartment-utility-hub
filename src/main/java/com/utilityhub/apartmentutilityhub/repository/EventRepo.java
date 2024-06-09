@@ -1,6 +1,5 @@
 package com.utilityhub.apartmentutilityhub.repository;
 
-import com.utilityhub.apartmentutilityhub.model.Apartment;
 import com.utilityhub.apartmentutilityhub.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
