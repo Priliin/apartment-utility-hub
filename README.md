@@ -39,7 +39,7 @@ This application is designed to provide a platform for apartment owners, residen
 
 4. Run the application:
    * Start the Spring Boot application:
-      * Start the Spring Boot application:
+      * mvn spring-boot:run
 
 5. Access the application:
    * Open your web browser and navigate to `http://localhost:8080`
