@@ -2,20 +2,36 @@
 <html xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout}" lang="en">
 <head>
     <title>Home</title>
 </head>
-<body class="d-flex flex-column h-100">
-<main class="flex-shrink-0">
-    <section layout:fragment="body" class="py-5">
-
-        <h1>Home page</h1>
-
-        <div th:if="${successMessage}" class="alert alert-success" role="alert">
-            <p th:text="${successMessage}"></p>
+<body>
+<main>
+    <section layout:fragment="body" class="py-5 center mb-auto">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Welcome!</h1>
+            <p class="lead fw-normal text-muted mb-0"></p>
         </div>
-
+        <div>
+            <img class="img-fluid rounded mb-4 mb-lg-4 center"
+                 th:src="@{../images/Atlandi9.jpg}"
+                 alt="Atlandi 9, Ruhnu" />
+        </div>
+        <div class="rows center">
+            <div class="columns">
+                <h3 class="font-weight-light">Atlandi 9, Ruhnu</h3>
+                <p>Apartments in total: 14
+                    <br/>Built in 1952<br/>
+                </p>
+            </div>
+            <div class="columns-right">
+                <h6 class="font-weight-light">Board Member Contact:</h6>
+                <p>John Smith
+                    <br/>5555 5555
+                    <br/>john@smith.com</p>
+            </div>
+        </div>
     </section>
 </main>
 </body>

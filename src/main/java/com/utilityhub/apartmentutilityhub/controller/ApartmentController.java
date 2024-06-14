@@ -33,14 +33,14 @@ public class ApartmentController {
 
         UserDTO user = getUserByUsername(userService);
 
-       List<ApartmentDTO> apartments = apartmentService.findAllApartments();
-       List<ApartmentDTO> userApartments = new ArrayList<>();
+        List<ApartmentDTO> apartments = apartmentService.findAllApartments();
+        List<ApartmentDTO> userApartments = new ArrayList<>();
 
-       for(ApartmentDTO apartment: apartments){
-           if(Objects.equals(apartment.getUserId(), user.getId())){
-               userApartments.add(apartment);
-           }
-       }
+        for(ApartmentDTO apartment: apartments){
+            if(Objects.equals(apartment.getUserId(), user.getId())){
+                userApartments.add(apartment);
+            }
+        }
         model.addAttribute("user", user);
         model.addAttribute("apartments", userApartments);
         return "user-apartment-list";

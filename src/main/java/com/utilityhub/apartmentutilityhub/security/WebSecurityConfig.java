@@ -40,6 +40,12 @@ public class    WebSecurityConfig {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(auth -> auth
+
+                        .requestMatchers("/","/error", "/event/**", "/css/**", "/home",
+                                "/templates/**", "/information/**",
+                                "/api/apartmentData/**", "/apartment/myApartments/**", "/images/**").hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
+                        .requestMatchers( "/event/**", "/apartment/**").hasAnyAuthority("ACCOUNTANT", "ADMIN")
+
                         .requestMatchers("/", "/error", "/css/**", "/home", "/templates/**", "/information/**")
                         .hasAnyAuthority("USER", "ACCOUNTANT", "ADMIN")
                         .requestMatchers("/api/apartmentData/**", "/apartment/myApartments/**")
@@ -49,6 +55,7 @@ public class    WebSecurityConfig {
                         .requestMatchers("/report/addMaintenance", "/report/addManager").hasAuthority("USER")
                         .requestMatchers("/report/maintenance").hasAnyAuthority("ACCOUNTANT", "ADMIN")
                         .requestMatchers("/report/manager").hasAuthority("ADMIN")
+
                         .requestMatchers("/**").hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated()
 

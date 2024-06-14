@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
-xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
@@ -15,7 +16,6 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/home}">Home</a></li>
-
                 <!-- Information -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="informationBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General information</a>
@@ -25,7 +25,6 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                             <a class="dropdown-item" th:href = "@{/information/addInfo}">Add information</a></li>
                     </ul>
                 </li>
-
                 <!-- Apartments -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="apartmentBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Apartments</a>
@@ -35,13 +34,10 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                         <li sec:authorize="hasAuthority('ADMIN')">
                             <a class="dropdown-item" th:href = "@{/apartment/add}">Add an apartment</a></li>
                         <li sec:authorize="hasAuthority('USER')">
-                            <a class="dropdown-item" th:href = "@{/apartment/myApartments}">My apartments</a>
-                </li>
+                            <a class="dropdown-item" th:href = "@{/apartment/myApartments}">My apartments</a></li>
                     </ul>
-
                 </li>
-
-
+                <!-- Events -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="infoBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -49,6 +45,7 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                         <li><a class="dropdown-item" th:href = "@{/event/addEvent}">Add event</a></li>
                     </ul>
                 </li>
+                <!-- Maintenance -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="reportBar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -62,7 +59,7 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                             <a class="dropdown-item" th:href="@{/report/manager}">Manager Tickets</a></li>
                     </ul>
                 </li>
-
+                <!-- Register new user -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" sec:authorize="hasAuthority('ADMIN')" id="registerBar2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -73,11 +70,9 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
                             <a class="dropdown-item" th:href = "@{/register/apartmentList}">Register user to apartment</a></li>
                     </ul>
                 </li>
+                <!-- Logout -->
                 <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-
-
 </ul>
-
         </div>
     </div>
 </nav>
@@ -100,8 +95,8 @@ xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout">
         </div>
     </div>
 </footer>
-<!-- Bootstrap core JS-->
+<!-- Bootstrap core JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
+<!-- Core theme JS -->
 <script src="js/scripts.js"></script>
 </html>

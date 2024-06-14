@@ -7,7 +7,6 @@
     <title>Apartment details</title>
 </head>
 <body class="d-flex flex-column">
-
 <section layout:fragment = "body">
     <div class="container">
         <div class="text-center my-5">
@@ -15,13 +14,11 @@
             <p class="lead mb-0">Apartment details</p>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-6">
                 <h2>Apartment information</h2>
@@ -33,7 +30,6 @@
                         <p class="card-text" th:text="${'Owners phone number: ' + apartment.ownersPhone}"></p>
                         <p class="card-text" th:text="${'Owners email: ' + apartment.ownersEmail}"></p>
                         <a class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')" th:href="@{/apartment/{apartmentNumber}/edit(apartmentNumber=${apartment.apartmentNumber})}">Edit information</a>
-
                     </div>
                 </div>
             </div>
