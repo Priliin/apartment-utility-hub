@@ -6,67 +6,30 @@
 <head>
     <title>Home</title>
 </head>
-<body class="d-flex flex-column h-100">
-<main class="flex-shrink-0">
-    <section layout:fragment="body" class="py-5">
+<body>
+<main>
+    <section layout:fragment="body" class="py-5 center mb-auto">
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome!</h1>
             <p class="lead fw-normal text-muted mb-0"></p>
         </div>
-        <div class="text-center mb-5">
-            <br/>
+        <div>
+            <img class="img-fluid rounded mb-4 mb-lg-4 center"
+                 th:src="@{../images/Atlandi9.jpg}"
+                 alt="Atlandi 9, Ruhnu" />
         </div>
-        <div class="center mb-5">
-            <!-- Page Content -->
-            <div class="container px-2 px-lg-5">
-                <!-- Apartment Heading Row -->
-                <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                    <div class="col-lg-5">
-                        <img class="img-fluid rounded mb-4 mb-lg-0"
-                             th:src="@{../images/Atlandi9.jpg}"
-                             alt="Atlandi 5, Ruhnu"/>
-                    </div>
-                    <!-- Apartment Block details -->
-                    <div class="col-lg-5">
-                        <h3 class="font-weight-light">Atlandi 9, Ruhnu</h3>
-                        <p>Apartments in total: 14
-                            <br/>Built in 1952<br/>
-                            <br/><b>Board Member Contact:</b>
-                            <br/>Nipi Tiri
-                            <br/>5555 5555
-                            <br/>nipi@tiri.ee</p>
-                    </div>
-                    <div class="text-center mb-5">
-                    </div>
-                    <!---->
-                    <div class="container" >
-                        <div class="text-start">
-                            <div class="card mb-4 bg-secondary">
-                                <div class="card-body">
-                                    <!-- Include the apartment list fragment and pass the apartments variable -->
-                                    <div th:include="apartment-list :: list"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Links -->
-                    <div class="text-center mb-5">
-                        <a class="btn btn-primary" th:href="@{../apartment/all}">All Apartments</a>
-                        <a class="btn btn-primary" th:href="@{../information}">Info</a>
-                        <a class="btn btn-primary" th:href="@{../event}">Events</a>
-                        <a class="btn btn-primary" th:href="@{../}">All Maintenances</a>
-                        <a class="btn btn-primary" th:href="@{../register}">Register New User</a>
-                    </div>
-                   <!-- General info block -->
-                    <!-- <div class="card text-black bg-secondary my-1 py-1 text-center">
-                         <div class="card-body"><p>
-                             &lt;!&ndash;<div class="card-body"><p class="text-white m-0">&ndash;&gt;
-                             Apartment Utility Hub application is designed to provide a platform for apartment owners,
-                             residents, accountants, and members of the apartment block board to manage
-                             and track utility usage and other data regarding the apartment block.</p>
-                         </div>
-                     </div>-->
-                </div>
+        <div class="rows center">
+            <div class="columns">
+                <h3 class="font-weight-light">Atlandi 9, Ruhnu</h3>
+                <p>Apartments in total: 14
+                    <br/>Built in 1952<br/>
+                </p>
+            </div>
+            <div class="columns-right">
+                <h6 class="font-weight-light">Board Member Contact:</h6>
+                <p>John Smith
+                    <br/>5555 5555
+                    <br/>john@smith.com</p>
             </div>
         </div>
     </section>
