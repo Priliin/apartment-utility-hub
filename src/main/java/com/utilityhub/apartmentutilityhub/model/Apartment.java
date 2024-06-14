@@ -3,9 +3,6 @@ package com.utilityhub.apartmentutilityhub.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>View Maintenance Tickets</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment="body" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder">Maintenance Tickets</h1>
+            </div>
+            <div th:if="${maintenanceTickets}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Creation Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="ticket : ${maintenanceTickets}">
+                        <td th:text="${ticket.id}"></td>
+                        <td th:text="${ticket.title}"></td>
+                        <td th:text="${ticket.description}"></td>
+                        <td th:text="${#temporals.format(ticket.creationDate, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${#lists.isEmpty(maintenanceTickets)}">
+                <p>No tickets found.</p>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
