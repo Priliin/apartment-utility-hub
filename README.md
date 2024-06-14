@@ -26,23 +26,23 @@ This application is designed to provide a platform for apartment owners, residen
    * cd 'repository-directory'
 
 2. Set up the application:
-  2.1 Ensure you have Java and Maven installed on your machine.
-  2.2 Build the project using Maven:
-      * mvn clean install
+   * Ensure you have Java and Maven installed on your machine.
+   * Build the project using Maven:
+     * mvn clean install
 
 3. Set up the database:
-  3.1 Create a new database (MySQL, Postgres, etc.).
-  3.2 Configure the database connection in the `application.properties` file located in `src/main/resources`. Update the following properties with your database information:
+   * Create a new database (MySQL, Postgres, etc.).
+   * Configure the database connection in the `application.properties` file located in `src/main/resources`. Update the following properties with your database information:
       * spring.datasource.url=jdbc:mysql://localhost:3306/your-database-name
       * spring.datasource.username=your-username
       * spring.datasource.password=your-password
 
 4. Run the application:
-  4.1 Start the Spring Boot application:
+   * Start the Spring Boot application:
       * Start the Spring Boot application:
 
-5. Access the application: 
-  5.1 Open your web browser and navigate to `http://localhost:8080`
+5. Access the application:
+   * Open your web browser and navigate to `http://localhost:8080`
 
 ## Contributors
 Liina, Indrek and Renar
