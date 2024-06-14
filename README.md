@@ -22,8 +22,8 @@ This application is designed to provide a platform for apartment owners, residen
 
 ## Getting Started
 1. Clone the repository: 
-   * git clone (repository-url)
-   * cd (repository-directory)
+   * git clone 'repository-url'
+   * cd 'repository-directory'
 
 2. Set up the application:
   2.1 Ensure you have Java and Maven installed on your machine.
